@@ -3,6 +3,7 @@
 use App\Http\Controllers\Frontend\MainController;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +18,18 @@ use Illuminate\Support\Facades\Route;
 //Frontend Route start
 Route::get('/', [MainController::class, 'index'])->name('home');
 Route::get('/about', [MainController::class, 'about'])->name('about');
+Route::get('/team', [MainController::class, 'team'])->name('team');
+Route::get('/catalog', [MainController::class, 'catalog'])->name('catalog');
+Route::get('/contact', [MainController::class, 'contact'])->name('contact');
+Route::get('/service', [MainController::class, 'service'])->name('service');
+Route::get('/service_single', [MainController::class, 'serviceSingle'])->name('serviceSingle');
+Route::get('/blog', [MainController::class, 'blog'])->name('blog');
+Route::get('/blog-single', [MainController::class, 'blogSingle'])->name('blogSingle');
+
+Route::get('/projects', [MainController::class, 'projects'])->name('projects');
+Route::get('/project-single', [MainController::class, 'projectSingle'])->name('projectSingle');
+
+
 
 
 
