@@ -8,19 +8,18 @@ class ProductObserver
 {
     public function saving(Product $product)
     {
-        // JSON formatida tilga asoslangan ma'lumotlarni qayta ishlash
-        $description = json_decode($product->description, true);
+        // Har bir til uchun description maydonini qayta ishlash
+        foreach (config('voyager.multilingual.locales') as $locale) {
+            // Har bir til bo‘yicha description maydonini oling
+            $description = $product->getTranslatedAttribute('description', $locale);
 
-        if (is_array($description)) {
-            foreach ($description as $locale => $desc) {
-                // Har bir til uchun HTML teglarini olib tashlash
-                $description[$locale] = strip_tags($desc);
+            if ($description) {
+                // HTML teglarini olib tashlash
+                $cleanDescription = strip_tags($description);
+
+                // Tozalangan ma'lumotni qayta saqlash
+                $product->setAttribute("description->{$locale}", $cleanDescription);
             }
-            // JSON formatini qayta saqlash
-            $product->description = json_encode($description);
-        } else {
-            // Agar kontent JSON formatda bo‘lmasa, ingliz tilida ishlaydi
-            $product->description = strip_tags($product->description);
         }
     }
 }
