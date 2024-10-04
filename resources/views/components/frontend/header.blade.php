@@ -1,7 +1,7 @@
 <!-- Start Header Navbar Area -->
 <header id="zr-theme-menu" class="zr-theme-menu-header-navber-area">
 
-{{--    view cart start modalka--}}
+    {{-- view cart start modalka--}}
     <div class="nav-top-bar">
         <div class="container">
             <div class="row">
@@ -15,13 +15,13 @@
                         <div class="top-info">
                             <i class="fa fa-map-pin"></i>
                             <p><span class="theme-color">Address:</span><span><a class="text-dark"
-                                                                                 href="https://www.google.com/maps/place/Tayhu/@41.3889256,69.2801609,653m/data=!3m2!1e3!4b1!4m6!3m5!1s0x38ae8d4eb3c71ab7:0x29734a4e8feeaa44!8m2!3d41.3889256!4d69.2827358!16s%2Fg%2F11pc4ryj7p?entry=ttu&g_ep=EgoyMDI0MDkyNC4wIKXMDSoASAFQAw%3D%3D"
-                                                                                 target="_blank">Karvan Yuli Street, Tashkent</a></span></p>
+                                        href="https://www.google.com/maps/place/Tayhu/@41.3889256,69.2801609,653m/data=!3m2!1e3!4b1!4m6!3m5!1s0x38ae8d4eb3c71ab7:0x29734a4e8feeaa44!8m2!3d41.3889256!4d69.2827358!16s%2Fg%2F11pc4ryj7p?entry=ttu&g_ep=EgoyMDI0MDkyNC4wIKXMDSoASAFQAw%3D%3D"
+                                        target="_blank">Karvan Yuli Street, Tashkent</a></span></p>
                         </div>
                         <div class="top-info">
                             <i class="fa fa-phone"></i>
                             <p><span class="theme-color">Phone:</span><a class="text-dark"
-                                                                         href="tel:+998712236508"><span> +998 71 223 65 08</span></a></p>
+                                    href="tel:+998712236508"><span> +998 71 223 65 08</span></a></p>
                         </div>
                     </div>
                 </div>
@@ -31,14 +31,30 @@
                             <ul class="navbar-nav flex-end">
                                 <li class="nav-item dropdown border-right">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        English
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        @if(app()->getLocale() == 'en')
+                                        EN
+                                        @elseif(app()->getLocale() == 'uz')
+                                        UZ
+                                        @else
+                                        RU
+                                        @endif
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                        <a href="#" class="dropdown-item">English</a>
-                                        <a href="#" class="dropdown-item">Russian</a>
-                                        <a href="#" class="dropdown-item">Uzbek</a>
+                                        <form method="POST" action="{{ route('change.language') }}">
+                                            @csrf
+                                            <button type="submit" name="lang" value="en" class="dropdown-item">
+                                                <span class="fi fi-gb" style="font-size: 16px;"></span> Английский
+                                            </button>
+                                            <button type="submit" name="lang" value="ru" class="dropdown-item">
+                                                <span class="fi fi-ru" style="font-size: 16px;"></span> Русский
+                                            </button>
+                                            <button type="submit" name="lang" value="uz" class="dropdown-item">
+                                                <span class="fi fi-ru" style="font-size: 16px;"></span> Узбекский
+                                            </button>
+                                        </form>
                                     </div>
+
                                 </li>
                                 <li class="nav-item position-relative">
                                     <button id="cart-open-btn" class="nav-link cartmini-open-btn">
@@ -57,8 +73,8 @@
                                                 </div>
                                                 <div class="cartmini__close">
                                                     <button type="button"
-                                                            class="cartmini__close-btn cartmini-close-btn"
-                                                            id="cart-close-btn">
+                                                        class="cartmini__close-btn cartmini-close-btn"
+                                                        id="cart-close-btn">
                                                         <!-- <i class=""></i> -->
                                                         <i class=" fa-solid fa-xmark"></i>
                                                     </button>
@@ -68,8 +84,8 @@
                                                 <p> Free Shipping for all orders over <span>$50</span></p>
                                                 <div class="progress">
                                                     <div class="progress-bar progress-bar-striped progress-bar-animated"
-                                                         role="progressbar" data-width="70%" aria-valuenow="70"
-                                                         aria-valuemin="0" aria-valuemax="100"></div>
+                                                        role="progressbar" data-width="70%" aria-valuenow="70"
+                                                        aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                             <div class="cartmini__widget">
@@ -117,7 +133,7 @@
         </div>
     </div>
 
-    {{--    view cart end modalka--}}
+    {{-- view cart end modalka--}}
 
 
     <nav class="navbar navbar-b navbar-trans navbar-expand-lg" id="mainNav">
@@ -126,8 +142,8 @@
                 <img src="assets/images/logo.png" alt="logo">
             </a>
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-                    data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false"
-                    aria-label="Toggle navigation"> <span></span> <span></span> <span></span>
+                data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false"
+                aria-label="Toggle navigation"> <span></span> <span></span> <span></span>
             </button>
             <div class="top-social-icon">
                 <a href="#"><i class="fa-brands fa-facebook-f facebook-bg"></i></a>

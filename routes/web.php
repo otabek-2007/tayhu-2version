@@ -3,6 +3,7 @@
 use App\Http\Controllers\Frontend\MainController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,8 @@ Route::get('/blog-single', [MainController::class, 'blogSingle'])->name('blogSin
 
 Route::get('/projects', [MainController::class, 'projects'])->name('projects');
 Route::get('/project-single', [MainController::class, 'projectSingle'])->name('projectSingle');
+
+Route::post('/change-language', [LanguageController::class, 'changeLanguage'])->name('change.language');
 
 
 
