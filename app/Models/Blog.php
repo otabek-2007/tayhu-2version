@@ -9,4 +9,7 @@ class Blog extends Model
 {
     use Translatable;
     protected $translatable = ['title', 'content'];
+    protected $casts = [
+        'date' => 'datetime'
+    ];
 }

@@ -112,7 +112,7 @@ return [
         'locales' => [
             'en',
             'ru',
-            'uz'
+            'uz '
             //'pt',
         ],
     ],
@@ -181,7 +181,7 @@ return [
     | UI Generic Config
     |--------------------------------------------------------------------------
     |
-    | Here you change some of the Voyager UI settings.
+    | Here you change some of the ager UI settings.
     |
     */
 

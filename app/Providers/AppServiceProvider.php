@@ -4,11 +4,13 @@ namespace App\Providers;
 
 use App\Models\Blog;
 use App\Models\Product;
+use App\Models\TayhuControllere;
 use App\Models\Team;
 use App\Observers\BlogObserver;
 use App\Observers\ProdductObserver;
 use App\Observers\ProductObserver;
 use App\Observers\TeamObserver;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,8 +28,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Product::observe(ProductObserver::class);
-        Team::observe(TeamObserver::class);
-        Blog::observe(BlogObserver::class);
+        $site = TayhuControllere::first();
+        View::share('site', $site);
+        
     }
 }

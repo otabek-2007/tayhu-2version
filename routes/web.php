@@ -22,13 +22,14 @@ Route::get('/about', [MainController::class, 'about'])->name('about');
 Route::get('/team', [MainController::class, 'team'])->name('team');
 Route::get('/catalog', [MainController::class, 'catalog'])->name('catalog');
 Route::get('/contact', [MainController::class, 'contact'])->name('contact');
-Route::get('/service', [MainController::class, 'service'])->name('service');
-Route::get('/service_single', [MainController::class, 'serviceSingle'])->name('serviceSingle');
+Route::get('/service/search', [MainController::class, 'serviceSearch'])->name('service.search');
+Route::get('/service/{id}', [MainController::class, 'service'])->name('service');
+Route::get('/service-single/{id}', [MainController::class, 'serviceSingle'])->name('serviceSingle');
 Route::get('/blog', [MainController::class, 'blog'])->name('blog');
-Route::get('/blog-single', [MainController::class, 'blogSingle'])->name('blogSingle');
+Route::get('/blog-single/{id}', [MainController::class, 'blogSingle'])->name('blogSingle');
 
 Route::get('/projects', [MainController::class, 'projects'])->name('projects');
-Route::get('/project-single', [MainController::class, 'projectSingle'])->name('projectSingle');
+Route::get('/project-single/{id}', [MainController::class, 'projectSingle'])->name('projectSingle');
 
 Route::post('/change-language', [LanguageController::class, 'changeLanguage'])->name('change.language');
 

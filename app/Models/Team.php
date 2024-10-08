@@ -8,5 +8,5 @@ use TCG\Voyager\Traits\Translatable;
 class Team extends Model
 {
     use Translatable;
-    protected $translatable = ['name', 'description'];
+    protected $translatable = ['name', 'description', 'position'];
 }

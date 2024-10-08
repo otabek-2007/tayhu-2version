@@ -1,195 +1,182 @@
 @extends('layouts.frontend')
 @section('content')
-    <!-- Start Slider Are -->
-    <header id="slider-home" class="slider slider-prlx bg-b">
-        <div class="swiper-container parallax-slider">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="bg-img valign" data-background="assets/images/slider-1.jpg" data-overlay-dark="5">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="caption text-center">
-                                        <h2>Best Construction Company</h2>
-                                        <span class="back-text">Construction</span>
-                                        <h1>We Build the Future</h1>
-                                        <p style="max-width: 650px; margin: 0 auto;">We Build the Future</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="bg-img valign" data-background="assets/images/slider-2.jpg" data-overlay-dark="5">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="caption text-center">
-                                        <h2>Best Architect Company</h2>
-                                        <span class="back-text">Architecter</span>
-                                        <h1>Mastermind Behind the Building</h1>
-                                        <p style="max-width: 650px; margin: 0 auto;">We Build the Future</p>
-                                    </div>
+<!-- Start Slider Are -->
+<header id="slider-home" class="slider slider-prlx bg-b">
+    <div class="swiper-container parallax-slider">
+        <div class="swiper-wrapper">
+            @foreach($banners as $banner)
+            <div class="swiper-slide">
+                <div class="bg-img valign" style="object-fit: cover;" data-background="{{ asset('storage/' . str_replace('\\', '/', $banner->image)) }}" data-overlay-dark="5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="caption text-center">
+                                    <h2>{!! $banner->getTranslatedAttribute('title', app()->getLocale()) !!}</h2>
+                                    <span class="back-text">{!! $banner->getTranslatedAttribute('body', app()->getLocale()) !!}</span>
+                                    <h1>{!! $banner->getTranslatedAttribute('background_word', app()->getLocale()) !!}</h1>
+                                    <p style="max-width: 650px; margin: 0 auto;">{!! $banner->getTranslatedAttribute('content', app()->getLocale()) !!}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="swiper-pagination"></div>
+            @endforeach
         </div>
-    </header>
-    <!-- End Slider Area -->
+        <div class="swiper-pagination"></div>
+    </div>
+</header>
+<!-- End Slider Area -->
 
 
-    <!-- Services Section Start -->
-    <div id="services" class="section-padding pb-0">
-        <div class="container position-relative">
+<!-- Services Section Start -->
+<div id="services" class="section-padding pb-0">
+    <div class="container position-relative">
 
-            <div class="row d-flex align-items-center position-relative mtm-150">
-                <!-- single service -->
-                <div class="col-lg-4 col-md-4 col-sm-12 wow kar-theme-single-service fadeInLeft text-center"
-                     data-wow-delay="0.2s">
-                    <div class="zr-theme-single-service-card flip">
-                        <img src="assets/images/icons/quality-icon.svg" alt="image">
-                        <h5>Quality</h5>
-                        <p>Products made from the highest quality building materials</p>
-                        <!-- <a class="theme-button-dark mt-20" href="service-details.html"><span class="plus">+</span>View Details<span></span></a> -->
-                    </div>
+        <div class="row d-flex align-items-center position-relative mtm-150">
+            <!-- single service -->
+            <div class="col-lg-4 col-md-4 col-sm-12 wow kar-theme-single-service fadeInLeft text-center"
+                data-wow-delay="0.2s">
+                <div class="zr-theme-single-service-card flip">
+                    <img src="assets/images/icons/quality-icon.svg" alt="image">
+                    <h5><x-translation key="quality" /><br></h5>
+                    <p><x-translation key="quality_text" /></p>
+                    <!-- <a class="theme-button-dark mt-20" href="#"><span class="plus">+</span>View Details<span></span></a> -->
                 </div>
-                <!-- single service -->
+            </div>
+            <!-- single service -->
 
-                <!-- single service -->
-                <div class="col-lg-4 col-md-4 col-sm-12 wow kar-theme-single-service fadeInUp text-center"
-                     data-wow-delay="0.3s">
-                    <div class="zr-theme-single-service-card flip">
-                        <img src="assets/images/icons/trust-icon.svg" alt="image">
-                        <h5>Trust</h5>
-                        <p>Has many years of experience and partners in the local market</p>
-                        <!-- <a class="theme-button-dark mt-20" href="service-details.html"><span class="plus">+</span>View Details<span></span></a> -->
-                    </div>
+            <!-- single service -->
+            <div class="col-lg-4 col-md-4 col-sm-12 wow kar-theme-single-service fadeInUp text-center"
+                data-wow-delay="0.3s">
+                <div class="zr-theme-single-service-card flip">
+                    <img src="assets/images/icons/trust-icon.svg" alt="image">
+                    <h5><x-translation key="trust" /></h5>
+                    <p><x-translation key="trust_text" /></p>
+                    <!-- <a class="theme-button-dark mt-20" href="#"><span class="plus">+</span>View Details<span></span></a> -->
                 </div>
-                <!-- single service -->
+            </div>
+            <!-- single service -->
 
-                <!-- single service -->
-                <div class="col-lg-4 col-md-4 col-sm-12 wow kar-theme-single-service fadeInRight text-center"
-                     data-wow-delay="0.4s">
-                    <div class="zr-theme-single-service-card flip">
-                        <img src="assets/images/icons/professionalism-icon.svg" alt="image">
-                        <h5>Professionalism</h5>
-                        <p>Individual and competent approach to each client</p>
-                        <!-- <a class="theme-button-dark mt-20" href="service-details.html"><span class="plus">+</span>View Details<span></span></a> -->
-                    </div>
+            <!-- single service -->
+            <div class="col-lg-4 col-md-4 col-sm-12 wow kar-theme-single-service fadeInRight text-center"
+                data-wow-delay="0.4s">
+                <div class="zr-theme-single-service-card flip">
+                    <img src="assets/images/icons/professionalism-icon.svg" alt="image">
+                    <h5><x-translation key="professionalism" /></h5>
+                    <p><x-translation key="professionalism_text" /></p>
+                    <!-- <a class="theme-button-dark mt-20" href="#"><span class="plus">+</span>View Details<span></span></a> -->
                 </div>
-                <!-- single service -->
+            </div>
+            <!-- single service -->
 
+        </div>
+    </div>
+</div>
+<!-- Services Section End -->
+
+<!-- Start Counter Section Start -->
+<div id="counter" class="counter-area section-padding pb-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="counter-container fadeInUp wow" data-wow-delay="0.2s">
+                    <img src="assets/images/icons/wide-icon.svg" alt="image">
+                    <div class="counter" data-target="500"></div>
+                    <span>Wide assortment</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="counter-container fadeInUp wow" data-wow-delay="0.4s">
+                    <img src="assets/images/icons/custumer.svg" alt="image">
+                    <div class="counter" data-target="490"></div>
+                    <span>Happy Clients</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="counter-container fadeInUp wow" data-wow-delay="0.6s">
+                    <img src="assets/images/icons/architect.svg" alt="image">
+                    <div class="counter" data-target="14"></div>
+                    <span>Many years of experience</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="counter-container fadeInUp wow" data-wow-delay="0.8s">
+                    <img src="assets/images/icons/partnership-icon-2.svg" alt="image" style="color: #FFA500;">
+                    <div class="counter" data-target="430"></div>
+                    <span>Partnerships</span>
+                </div>
             </div>
         </div>
     </div>
-    <!-- Services Section End -->
-
-    <!-- Start Counter Section Start -->
-    <div id="counter" class="counter-area section-padding pb-0">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="counter-container fadeInUp wow" data-wow-delay="0.2s">
-                        <img src="assets/images/icons/wide-icon.svg" alt="image">
-                        <div class="counter" data-target="500"></div>
-                        <span>Wide assortment</span>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="counter-container fadeInUp wow" data-wow-delay="0.4s">
-                        <img src="assets/images/icons/custumer.svg" alt="image">
-                        <div class="counter" data-target="490"></div>
-                        <span>Happy Clients</span>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="counter-container fadeInUp wow" data-wow-delay="0.6s">
-                        <img src="assets/images/icons/architect.svg" alt="image">
-                        <div class="counter" data-target="14"></div>
-                        <span>Many years of experience</span>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="counter-container fadeInUp wow" data-wow-delay="0.8s">
-                        <img src="assets/images/icons/partnership-icon-2.svg" alt="image" style="color: #FFA500;">
-                        <div class="counter" data-target="430"></div>
-                        <span>Partnerships</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Counter Section Start -->
+</div>
+<!-- End Counter Section Start -->
 
 
-    <!-- Start Why us Section -->
-    <div id="about-us" class="about-us section-padding">
-        <div class="container">
-            <div class="guarantee-content">
-                <div class="row mb-30">
-                    <div class="col-lg-6 col-md-12">
-                        <div class="single-services-item">
-                            <div class="services-heading">
-                                <h2>Looking into the future</h2>
-                                <p>Our company has been producing high-quality plastic panels for walls and ceilings for
-                                    many years. The company has a unique brand and position in the global market, and
-                                    today it delights more than a hundred customers with its products. In recent years,
-                                    the company has also launched the production of MDF panels and plans to reach new
-                                    heights in this field.</p>
-                                <br>
+<!-- Start Why us Section -->
+<div id="about-us" class="about-us section-padding">
+    <div class="container">
+        <div class="guarantee-content">
+            <div class="row mb-30">
+                <div class="col-lg-6 col-md-12">
+                    <div class="single-services-item">
+                        <div class="services-heading">
+                            <h2>{!! $intoFuture->getTranslatedAttribute('title', app()->getLocale()) !!}</h2>
+                            <p>{!! $intoFuture->getTranslatedAttribute('content', app()->getLocale()) !!}</p>
+                            <br>
 
-                                <a class="theme-button-dark mt-20" href="about.html"><span class="plus">+</span>Read
-                                    more<span></span></a>
-                            </div>
+                            <a class="theme-button-dark mt-20" href="{{route('about')}}"><span class="plus">+</span>Read
+                                more<span></span></a>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12">
-                        <img src="assets/images/homepage-1.jpg" class="img-fluid" alt="image">
-                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <img src="{{ asset('storage/' . str_replace('\\', '/', $intoFuture->image)) }}" class="img-fluid" alt="image">
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
-    <!-- Gallery Section Start -->
-    <section id="gallery" class="gallery-area section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12">
-                    <div class="section-title">
-                        <h2>Our Projects</h2>
-                        <h5>Testament to our expertise and versatility in delivering successful construction projects
-                            across various sectors</h5>
-                    </div>
+<!-- Gallery Section Start -->
+<section id="gallery" class="gallery-area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="section-title">
+                    <h2><x-translation key="our_project" /></h2>
+                    <h5><x-translation key="our_project_text" /></h5>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="gallery-list">
-                        <ul class="nav" id="gallery-flters">
-                            <li class="filter filter-active" data-filter=".all">All<span></span></li>
-                            <li class="filter" data-filter=".Construction">Construction<span></span></li>
-                            <li class="filter" data-filter=".Electrical">Electrical<span></span></li>
-                            <li class="filter" data-filter=".Architect">Architect<span></span></li>
-                            <li class="filter" data-filter=".Building">Building<span></span></li>
-                        </ul>
-                    </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="gallery-list">
+                    <ul class="nav" id="gallery-flters">
+                        <li class="filter filter-active" data-filter=".all"><x-translation key="all_link" /><span></span></li>
+                        <li class="filter" data-filter=".Construction"><x-translation key="construction_link" /><span></span></li>
+                        <li class="filter" data-filter=".Electrical"><x-translation key="electrical_link" /><span></span></li>
+                        <li class="filter" data-filter=".Architect"><x-translation key="architect_link" /><span></span></li>
+                        <li class="filter" data-filter=".Building"><x-translation key="building_link" /><span></span></li>
+                    </ul>
                 </div>
-                <div class="gallery-container">
-                    <!-- gallery-item -->
-                    <div class="col-lg-3 col-md-3 gallery-grid-item all Electrical Building">
+            </div>
+            <div class="gallery-container">
+                <div class="row"> <!-- Add a row here to wrap the grid items -->
+                    <!-- Electrical Projects -->
+                    @foreach($electrical as $project)
+                    <div class="col-lg-3 col-md-4 col-sm-6 gallery-grid-item Electrical">
                         <div class="gallery-item">
-                            <img src="assets/images/photos/gallery-1.jpg" alt="image">
+                            @if(is_array($project->images_array) && count($project->images_array) > 0)
+                            <img class="image-1" src="{{ asset('storage/' . $project->images_array[0]) }}" alt="Product Image">
+                            @else
+                            <p>No images available.</p>
+                            @endif
                             <div class="gallery-img-overlay">
                                 <div class="gallery-content">
                                     <div class="top">
-                                        <a href="project-single.html" class="poplink mr-7">
+                                        <a href="/project-single/{{$project->id}}" class="poplink mr-7">
                                             <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
                                         </a>
                                         <a href="assets/images/photos/gallery-1.jpg" class="popimg">
@@ -197,479 +184,421 @@
                                         </a>
                                     </div>
                                     <div class="info">
-                                        <a href="project-single.html" class="poplink">
-                                            Project Title
+                                        <a href="/project-single/{{$project->id}}" class="poplink">
+                                            {{ $project->getTranslatedAttribute('title') }} <!-- Use the project title dynamically -->
                                         </a>
-                                        <p>Free Zone</p>
+                                        <p>{!! Str::words($project->getTranslatedAttribute('content', app()->getLocale()), 3, '...') !!}</p> <!-- Dynamic project description -->
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- gallery-item -->
-                    <div class="col-lg-3 col-md-3 gallery-grid-item all Electrical Construction">
+                    @endforeach
+
+                    <!-- All Projects -->
+                    @foreach($projects as $project)
+                    <div class="col-lg-3 col-md-4 col-sm-6 gallery-grid-item all">
                         <div class="gallery-item">
-                            <img src="assets/images/photos/gallery-2.jpg" alt="image">
+                            @if(is_array($project->images_array) && count($project->images_array) > 0)
+                            <img class="image-1" src="{{ asset('storage/' . $project->images_array[0]) }}" alt="Product Image">
+                            @else
+                            <p>No images available.</p>
+                            @endif
                             <div class="gallery-img-overlay">
                                 <div class="gallery-content">
                                     <div class="top">
-                                        <a href="project-single.html" class="poplink mr-7">
+                                        <a href="/project-single/{{$project->id}}" class="poplink mr-7">
                                             <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
                                         </a>
-                                        <a href="assets/images/photos/gallery-2.jpg" class="popimg">
+                                        <a href="assets/images/photos/gallery-1.jpg" class="popimg">
                                             <span class="icon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
                                         </a>
                                     </div>
                                     <div class="info">
-                                        <a href="project-single.html" class="poplink">
-                                            Project Title
+                                        <a href="/project-single/{{$project->id}}" class="poplink">
+                                            {{ $project->getTranslatedAttribute('title') }} <!-- Use the project title dynamically -->
                                         </a>
-                                        <p>Free Zone</p>
+                                        <p>{!! Str::words($project->getTranslatedAttribute('content', app()->getLocale()), 3, '...') !!}</p> <!-- Dynamic project description -->
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- gallery-item -->
-                    <div class="col-lg-3 col-md-3 gallery-grid-item all Electrical Building">
+                    @endforeach
+
+                    <!-- Building Projects -->
+                    @foreach($building as $project)
+                    <div class="col-lg-3 col-md-4 col-sm-6 gallery-grid-item Building">
                         <div class="gallery-item">
-                            <img src="assets/images/photos/gallery-3.jpg" alt="image">
+                            @if(is_array($project->images_array) && count($project->images_array) > 0)
+                            <img class="image-1" src="{{ asset('storage/' . $project->images_array[0]) }}" alt="Product Image">
+                            @else
+                            <p>No images available.</p>
+                            @endif
                             <div class="gallery-img-overlay">
                                 <div class="gallery-content">
                                     <div class="top">
-                                        <a href="project-single.html" class="poplink mr-7">
+                                        <a href="/project-single/{{$project->id}}" class="poplink mr-7">
                                             <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
                                         </a>
-                                        <a href="assets/images/photos/gallery-3.jpg" class="popimg">
+                                        <a href="assets/images/photos/gallery-1.jpg" class="popimg">
                                             <span class="icon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
                                         </a>
                                     </div>
                                     <div class="info">
-                                        <a href="project-single.html" class="poplink">
-                                            Project Title
+                                        <a href="/project-single/{{$project->id}}" class="poplink">
+                                            {{ $project->getTranslatedAttribute('title') }} <!-- Use the project title dynamically -->
                                         </a>
-                                        <p>Free Zone</p>
+                                        <p>{!! Str::words($project->getTranslatedAttribute('content', app()->getLocale()), 3, '...') !!}</p> <!-- Dynamic project description -->
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- gallery-item -->
-                    <div class="col-lg-3 col-md-3 gallery-grid-item all Electrical webdesig Constructionn">
+                    @endforeach
+
+                    <!-- Construction Projects -->
+                    @foreach($construction as $project)
+                    <div class="col-lg-3 col-md-4 col-sm-6 gallery-grid-item Construction">
                         <div class="gallery-item">
-                            <img src="assets/images/photos/gallery-4.jpg" alt="image">
+                            @if(is_array($project->images_array) && count($project->images_array) > 0)
+                            <img class="image-1" src="{{ asset('storage/' . $project->images_array[0]) }}" alt="Product Image">
+                            @else
+                            <p>No images available.</p>
+                            @endif
+
                             <div class="gallery-img-overlay">
                                 <div class="gallery-content">
                                     <div class="top">
-                                        <a href="project-single.html" class="poplink mr-7">
+                                        <a href="/project-single/{{$project->id}}" class="poplink mr-7">
                                             <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
                                         </a>
-                                        <a href="assets/images/photos/gallery-4.jpg" class="popimg">
+                                        <a href="assets/images/photos/gallery-1.jpg" class="popimg">
                                             <span class="icon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
                                         </a>
                                     </div>
                                     <div class="info">
-                                        <a href="project-single.html" class="poplink">
-                                            Project Title
+                                        <a href="/project-single/{{$project->id}}" class="poplink">
+                                            {{ $project->getTranslatedAttribute('title') }} <!-- Use the project title dynamically -->
                                         </a>
-                                        <p>Free Zone</p>
+                                        <p>{!! Str::words($project->getTranslatedAttribute('content', app()->getLocale()), 3, '...') !!}</p> <!-- Dynamic project description -->
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- gallery-item -->
-                    <div class="col-lg-3 col-md-3 gallery-grid-item all Electrical Building Construction">
+                    @endforeach
+
+                    <!-- Architect Projects -->
+                    @foreach($architect as $project)
+                    <div class="col-lg-3 col-md-4 col-sm-6 gallery-grid-item Architect">
                         <div class="gallery-item">
-                            <img src="assets/images/photos/gallery-5.jpg" alt="image">
+                            @if(count($project->images_array) > 0)
+                            <img class="image-1" src="{{ asset('storage/' . $project->images_array[0]) }}" alt="Product Image">
+                            @else
+                            <p>No images available.</p>
+                            @endif
+
                             <div class="gallery-img-overlay">
                                 <div class="gallery-content">
                                     <div class="top">
-                                        <a href="project-single.html" class="poplink mr-7">
+                                        <a href="/project-single/{{$project->id}}" class="poplink mr-7">
                                             <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
                                         </a>
-                                        <a href="assets/images/photos/gallery-5.jpg" class="popimg">
+                                        <a href="assets/images/photos/gallery-1.jpg" class="popimg">
                                             <span class="icon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
                                         </a>
                                     </div>
                                     <div class="info">
-                                        <a href="project-single.html" class="poplink">
-                                            Project Title
+                                        <a href="/project-single/{{$project->id}}" class="poplink">
+                                            {{ $project->getTranslatedAttribute('title') }} <!-- Use the project title dynamically -->
                                         </a>
-                                        <p>Free Zone</p>
+                                        <p>{!! Str::words($project->getTranslatedAttribute('content', app()->getLocale()), 3, '...') !!}</p> <!-- Dynamic project description -->
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- gallery-item -->
-                    <div class="col-lg-3 col-md-3 gallery-grid-item all Electrical Building Architect">
-                        <div class="gallery-item">
-                            <img src="assets/images/photos/gallery-6.jpg" alt="image">
-                            <div class="gallery-img-overlay">
-                                <div class="gallery-content">
-                                    <div class="top">
-                                        <a href="project-single.html" class="poplink mr-7">
-                                            <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
-                                        </a>
-                                        <a href="assets/images/photos/gallery-6.jpg" class="popimg">
-                                            <span class="icon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
-                                        </a>
-                                    </div>
-                                    <div class="info">
-                                        <a href="project-single.html" class="poplink">
-                                            Project Title
-                                        </a>
-                                        <p>Free Zone</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- gallery-item -->
-                    <div class="col-lg-3 col-md-3 gallery-grid-item all Electrical Building Architect">
-                        <div class="gallery-item">
-                            <img src="assets/images/photos/gallery-7.jpg" alt="image">
-                            <div class="gallery-img-overlay">
-                                <div class="gallery-content">
-                                    <div class="top">
-                                        <a href="project-single.html" class="poplink mr-7">
-                                            <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
-                                        </a>
-                                        <a href="assets/images/photos/gallery-7.jpg" class="popimg">
-                                            <span class="icon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
-                                        </a>
-                                    </div>
-                                    <div class="info">
-                                        <a href="project-single.html" class="poplink">
-                                            Project Title
-                                        </a>
-                                        <p>Free Zone</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+                </div> <!-- Close the row here -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Gallery Section End -->
+
+
+
+
+<!-- Start Reservation Area -->
+<section id="reservation" class="zr-theme-reservation-area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 text-center">
+                <h2><x-translation key="help_link" /></h2>
+                <h5><x-translation key="help_text" /></h5>
+                <h2><a href="tel:+998712236508">+998 71 223 65 08</a></h2>
+
+                <div class="mt-20"><a class="theme-button-dark" #"><span
+                            class="plus">+</span><x-translation key="help_link" /><span></span></a></div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Reservation Area -->
+
+
+<!-- Team Section Start -->
+<!-- Team Section Start -->
+<section id="team" class="team bg-grey section-padding">
+    <div class="container aos-init aos-animate" data-aos="fade-up">
+        <div class="section-title">
+            <h2><x-translation key="our_team_link" /></h2>
+            <h5><x-translation key="our_team_text" /></h5>
+        </div>
+
+        <div id="team-carousel" class="owl-carousel owl-theme">
+            @foreach($teams as $item)
+            <div class="team-member aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+                <div class="member flip">
+                    <img src="{{ asset('storage/' . str_replace('\\', '/', $item->image_url)) }}" style="height:auto" class="img-fluid" alt="">
+                    <h4>{{ $item->getTranslatedAttribute('name') }}</h4>
+                    <span>{{ $item->getTranslatedAttribute('position') }}</span>
                 </div>
-                <!-- gallery more button -->
-                <div class="col-md-12">
-                    <div class="gallery-more-btn text-center mt-15">
-                        <a class="theme-button-dark" href="index.html">View Gallery<span></span></a>
-                    </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+<!-- Team Section End -->
+
+
+<!-- Testimonials Section Start -->
+<section id="review" class="testimonial-area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2><x-translation key="testimonial_link" /></h2>
+                    <h5><x-translation key="people_love" /></h5>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Gallery Section End -->
-
-
-
-    <!-- Start Reservation Area -->
-    <section id="reservation" class="zr-theme-reservation-area section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 text-center">
-                    <h2>Get Help?</h2>
-                    <h5>Call our technical support team at</h5>
-                    <h2><a href="tel:+998712236508">+998 71 223 65 08</a></h2>
-
-                    <div class="mt-20"><a class="theme-button-dark" href="appointment.html"><span
-                                class="plus">+</span>Get Help<span></span></a></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Reservation Area -->
-
-
-    <!-- Team Section Start -->
-    <section id="team" class="team bg-grey section-padding">
-        <div class="container aos-init aos-animate" data-aos="fade-up">
-
-            <div class="section-title">
-                <h2>Our Team</h2>
-                <h5>Our team comprises seasoned and dedicated construction professionals who bring a wealth of expertise
-                    to every project</h5>
-            </div>
-
-            <div class="row gy-4">
-
-                <div class="col-xl-3 col-md-6 col-sm-6 d-flex aos-init aos-animate" data-aos="fade-up"
-                     data-aos-delay="100">
-                    <div class="member flip">
-                        <img src="assets/images/team/team-1.jpg" class="img-fluid" alt="">
-                        <h4>Jhone Bi</h4>
-                        <span>Application Manager</span>
-                    </div>
-                </div><!-- End Team Member -->
-
-                <div class="col-xl-3 col-md-6 col-sm-6 d-flex aos-init aos-animate" data-aos="fade-up"
-                     data-aos-delay="200">
-                    <div class="member flip">
-                        <img src="assets/images/team/team-2.jpg" class="img-fluid" alt="">
-                        <h4>Sani Awesome</h4>
-                        <span>Social Media</span>
-                    </div>
-                </div><!-- End Team Member -->
-
-                <div class="col-xl-3 col-md-6 col-sm-6 d-flex aos-init aos-animate" data-aos="fade-up"
-                     data-aos-delay="300">
-                    <div class="member flip">
-                        <img src="assets/images/team/team-3.jpg" class="img-fluid" alt="">
-                        <h4>Andrio Willi</h4>
-                        <span>Content Writer</span>
-                    </div>
-                </div><!-- End Team Member -->
-
-                <div class="col-xl-3 col-md-6 col-sm-6 d-flex aos-init aos-animate" data-aos="fade-up"
-                     data-aos-delay="400">
-                    <div class="member flip">
-                        <img src="assets/images/team/team-4.jpg" class="img-fluid" alt="">
-                        <h4>Afa Jonson</h4>
-                        <span>Business Manager</span>
-                    </div>
-                </div><!-- End Team Member -->
-
-            </div>
-
-        </div>
-    </section>
-    <!-- Team Section End -->
-
-
-    <!-- Testimonials Section Start -->
-    <section id="review" class="testimonial-area section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-title">
-                        <h2>Testimonials</h2>
-                        <h5>People love us</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 col-md-12">
-                    <div id="testimonial-slide" class="owl-carousel owl-theme owl-loaded owl-drag">
-                        <!-- testimonials item -->
-                        <div class="single-testimonial">
-                            <div class="testi-content-inner">
-                                <div class="testimonial-bio">
-                                    <div class="avatar">
-                                        <img src="assets/images/clients/testimonial-2.jpg" alt="testimonial">
-                                    </div>
-                                </div>
-                                <div class="testimonial-content">
-                                    <p>Thank you very much. Very Awesome Template. I’m impressed with your service. I’ve
-                                        already told my friends about your template and your quick response, thanks
-                                        again!</p>
-                                </div>
-                                <div class="testimonial-bio">
-                                    <div class="bio-info">
-                                        <h3 class="name">Elizabeth Will</h3>
-                                    </div>
-                                </div>
-                                <div class="rating-box">
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div id="testimonial-slide" class="owl-carousel owl-theme owl-loaded owl-drag">
+                    <!-- testimonials item -->
+                    <div class="single-testimonial">
+                        <div class="testi-content-inner">
+                            <div class="testimonial-bio">
+                                <div class="avatar">
+                                    <img src="assets/images/clients/testimonial-2.jpg" alt="testimonial">
                                 </div>
                             </div>
-                        </div>
-                        <!-- testimonials item -->
-                        <div class="single-testimonial">
-                            <div class="testi-content-inner">
-                                <div class="testimonial-bio">
-                                    <div class="avatar">
-                                        <img src="assets/images/clients/testimonial-3.jpg" alt="testimonial">
-                                    </div>
-                                </div>
-                                <div class="testimonial-content">
-                                    <p>Great Support, I would just like to say thank you for your prompt and effective
-                                        service, for your friendly and professional support staff! I will recommend your
-                                        expert company to all my friends.</p>
-                                </div>
-                                <div class="testimonial-bio">
-                                    <div class="bio-info">
-                                        <h3 class="name">William Hoy</h3>
-                                    </div>
-                                </div>
-                                <div class="rating-box">
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
+                            <div class="testimonial-content">
+                                <p>Thank you very much. Very Awesome Template. I’m impressed with your service. I’ve
+                                    already told my friends about your template and your quick response, thanks
+                                    again!</p>
+                            </div>
+                            <div class="testimonial-bio">
+                                <div class="bio-info">
+                                    <h3 class="name">Elizabeth Will</h3>
                                 </div>
                             </div>
-                        </div>
-                        <!-- testimonials item -->
-                        <div class="single-testimonial">
-                            <div class="testi-content-inner">
-                                <div class="testimonial-bio">
-                                    <div class="avatar">
-                                        <img src="assets/images/clients/testimonial-4.jpg" alt="testimonial">
-                                    </div>
-                                </div>
-                                <div class="testimonial-content">
-                                    <p>Wow Very Nice Team, I'm so happy with your service. You managed to exceed my
-                                        expectations! You guys are very efficient and I will refer more people and my
-                                        social media to your company!</p>
-                                </div>
-                                <div class="testimonial-bio">
-                                    <div class="bio-info">
-                                        <h3 class="name">Sara William</h3>
-                                    </div>
-                                </div>
-                                <div class="rating-box">
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
+                            <div class="rating-box">
+                                <ul>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Testimonials Section End -->
-
-
-    <!-- Partner Section Start -->
-    <div class="theme-partner-area bg-grey section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2 col-md-6 col-sm-6">
-                    <div class="theme-single-press-content flip">
-                        <img src="assets/images/partners/p1.jpg" alt="image">
+                    <!-- testimonials item -->
+                    <div class="single-testimonial">
+                        <div class="testi-content-inner">
+                            <div class="testimonial-bio">
+                                <div class="avatar">
+                                    <img src="assets/images/clients/testimonial-3.jpg" alt="testimonial">
+                                </div>
+                            </div>
+                            <div class="testimonial-content">
+                                <p>Great Support, I would just like to say thank you for your prompt and effective
+                                    service, for your friendly and professional support staff! I will recommend your
+                                    expert company to all my friends.</p>
+                            </div>
+                            <div class="testimonial-bio">
+                                <div class="bio-info">
+                                    <h3 class="name">William Hoy</h3>
+                                </div>
+                            </div>
+                            <div class="rating-box">
+                                <ul>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6">
-                    <div class="theme-single-press-content flip">
-                        <img src="assets/images/partners/p2.jpg" alt="image">
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6">
-                    <div class="theme-single-press-content flip">
-                        <img src="assets/images/partners/p3.jpg" alt="image">
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6">
-                    <div class="theme-single-press-content flip">
-                        <img src="assets/images/partners/p4.jpg" alt="image">
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6">
-                    <div class="theme-single-press-content flip">
-                        <img src="assets/images/partners/p5.jpg" alt="image">
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6">
-                    <div class="theme-single-press-content flip">
-                        <img src="assets/images/partners/p6.jpg" alt="image">
+                    <!-- testimonials item -->
+                    <div class="single-testimonial">
+                        <div class="testi-content-inner">
+                            <div class="testimonial-bio">
+                                <div class="avatar">
+                                    <img src="assets/images/clients/testimonial-4.jpg" alt="testimonial">
+                                </div>
+                            </div>
+                            <div class="testimonial-content">
+                                <p>Wow Very Nice Team, I'm so happy with your service. You managed to exceed my
+                                    expectations! You guys are very efficient and I will refer more people and my
+                                    social media to your company!</p>
+                            </div>
+                            <div class="testimonial-bio">
+                                <div class="bio-info">
+                                    <h3 class="name">Sara William</h3>
+                                </div>
+                            </div>
+                            <div class="rating-box">
+                                <ul>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                    <li><i class="fa fa-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Partner Section End -->
+</section>
+<!-- Testimonials Section End -->
 
 
-    <!-- Blog Section Start -->
-    <section id="blog" class="blog-area section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12">
-                    <div class="section-title">
-                        <h2>Our Blog</h2>
-                        <h5>Read our latest news</h5>
-                    </div>
+<!-- Partner Section Start -->
+<div class="theme-partner-area bg-grey section-padding">
+    <div class="container">
+        <div class="owl-carousel">
+            @foreach($partners as $item)
+            <div class="item">
+                <div class="theme-single-press-content flip">
+                    <img src="{{ asset('storage/' . $item->icon) }}" style="height:150px; object-fit:cover;" alt="image">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12 col-md-4 wow fadeInLeft" data-wow-delay="0.2s">
-                    <a href="single-blog.html">
-                        <div class="card flip">
-                            <img class="card-img" src="assets/images/news/blog-1.jpg" alt="blog image">
-                            <div class="card-body">
-                                <h4 class="card-title">Top Trends in Modern Construction Design</h4>
-                                <div class="blog-text">
-                                    <p>Discover the latest trends shaping the world of modern construction design. From
-                                        sustainable materials to innovative building techniques, explore how these
-                                        trends are reshaping the industry and inspiring new possibilities for your
-                                        projects.</p>
-                                </div>
-                                <div class="blog-bottom-text-link">
-                                    <span class="date">January 10, 2024</span>
-                                    <span class="red-text">Read Story</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+            @endforeach
+        </div>
+    </div>
+</div>
 
-                <div class="col-sm-12 col-md-4 wow fadeInLeft" data-wow-delay="0.2s">
-                    <a href="single-blog.html">
-                        <div class="card flip">
-                            <img class="card-img" src="assets/images/news/blog-2.jpg" alt="blog image">
-                            <div class="card-body">
-                                <h4 class="card-title">Tips for a Successful Construction Project</h4>
-                                <div class="blog-text">
-                                    <p>Learn valuable tips and insights to ensure a successful construction project.
-                                        From effective project planning to managing budgets and timelines, discover
-                                        strategies for minimizing risks, maximizing efficiency, and achieving your
-                                        construction goals.</p>
-                                </div>
-                                <div class="blog-bottom-text-link">
-                                    <span class="date">March 10, 2024</span>
-                                    <span class="red-text">Read Story</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
 
-                <div class="col-sm-12 col-md-4 wow fadeInLeft" data-wow-delay="0.2s">
-                    <a href="single-blog.html">
-                        <div class="card flip">
-                            <img class="card-img" src="assets/images/news/blog-3.jpg" alt="blog image">
-                            <div class="card-body">
-                                <h4 class="card-title">Innovations in Construction Technology</h4>
-                                <div class="blog-text">
-                                    <p>Dive into the exciting world of smart homes and explore the cutting-edge
-                                        technologies transforming residential construction. From automated systems to
-                                        energy-efficient solutions, learn how these innovations are revolutionizing the
-                                        way we live.</p>
-                                </div>
-                                <div class="blog-bottom-text-link">
-                                    <span class="date">October 10, 2024</span>
-                                    <span class="red-text">Read Story</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+<!-- Partner Section End -->
 
-                <div class="col-md-12">
-                    <div class="blog-more-btn text-center mt-15">
-                        <a class="theme-button-dark" href="blogs.html"><span class="plus">+</span>View More
-                            Blogs<span></span></a>
-                    </div>
+
+<!-- Blog Section Start -->
+<section id="blog" class="blog-area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="section-title">
+                    <h2><x-translation key="our_blog_link" /></h2>
+                    <h5><x-translation key="latest_new" /></h5>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Blog Section End -->
+        <div class="row">
+            @foreach($blogs as $blog)
+            <div class="col-sm-12 col-md-4 wow fadeInLeft" data-wow-delay="0.2s">
+                <a href="/blog-single/{{$blog->id}}">
+                    <div class="card flip">
+                        <img class="card-img" src="assets/images/news/blog-1.jpg" alt="blog image">
+                        <div class="card-body">
+                            <h4 class="card-title">{!! $blog->getTranslatedAttribute('title', app()->getLocale()) !!}</h4>
+                            <div class="blog-text">
+                                <p>{!! Str::words($blog->getTranslatedAttribute('content', app()->getLocale()), 10, '...') !!}</p>
+                            </div>
+                            <div class="blog-bottom-text-link">
+                                <span class="date">{{ ($blog->date) ? $blog->date->format('F d, Y') : $blog->created_at->format('F d, Y') }}</span>
+                                <span class="red-text">Read Story</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            @endforeach
+
+            <div class="col-md-12">
+                <div class="blog-more-btn text-center mt-15">
+                    <a class="theme-button-dark" #"><span class="plus">+</span><x-translation key="view_blogs_link" /><span></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog Section End -->
 
 @endsection
+<!-- Include jQuery and Owl Carousel Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<!-- Include Owl Carousel CSS and JavaScript -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- Initialize Owl Carousel -->
+<script>
+    $(document).ready(function() {
+        $('#team-carousel').owlCarousel({
+            loop: true,
+            margin: 30,
+            nav: false,
+            dots: false, // Disable dots
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
+                    items: 1 // Mobile: 1 item
+                },
+                600: {
+                    items: 2 // Tablet: 2 items
+                },
+                1000: {
+                    items: 4 // Desktop: 4 items
+                }
+            }
+        });
+    });
+    $(document).ready(function() {
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            autoplay: true,
+            autoplayTimeout: 3000, // har 3 soniyada aylanish
+            autoplayHoverPause: true,
+            nav: false, // navigatsiya tugmalarini o'chirish
+            dots: false, // nuqtalarini o'chirish
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 6
+                }
+            }
+        });
+    });
+</script>
+
+<!-- Include Owl Carousel CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />

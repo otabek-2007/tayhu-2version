@@ -10,4 +10,8 @@ class ProductCategory extends Model
 {
     use HasFactory, Translatable;
     protected $translatable = ['name'];
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'category_id');
+    }
 }
