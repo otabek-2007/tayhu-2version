@@ -91,6 +91,8 @@
                     <li class="nav-item"><a class="nav-link js-scroll" href="{{route('projects')}}"><x-translation key="project_link" /></a></li>
                     <li class="nav-item"><a class="nav-link js-scroll" href="{{route('team')}}"><x-translation key="team_link" /></a></li>
                     <li class="nav-item"><a class="nav-link js-scroll" href="{{route('blog')}}"><x-translation key="blog_link" /></a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll" href="{{route('showroom')}}"><x-translation key="showroom_link" /></a></li>
+
                     <li class="nav-item"><a class="nav-link js-scroll" href="{{route('contact')}}"><x-translation key="contact_link" /></a></li>
                     <li class="nav-item"><a class="theme-button-dark" href="{{route('contact')}}"><x-translation key="help_link" /><span></span></a>
                     </li>

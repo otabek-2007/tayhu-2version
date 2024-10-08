@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <textarea class="form-control" id="message" name="message" rows="10" placeholder="Write Your Message*" required="required" data-error="Please, leave us a message."></textarea>
+                                        <textarea class="form-control" id="message" name="message" rows="10" placeholder="{{__('messages.')}}" required="required" data-error="Please, leave us a message."></textarea>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -69,19 +69,16 @@
                         <p><i class="fa fa-map"></i> <x-translation key="long_location" /></p>
                         <p><a href="https://www.google.com/maps/place/Tayhu/@41.3889256,69.2801609,653m/data=!3m2!1e3!4b1!4m6!3m5!1s0x38ae8d4eb3c71ab7:0x29734a4e8feeaa44!8m2!3d41.3889256!4d69.2827358!16s%2Fg%2F11pc4ryj7p?entry=ttu&g_ep=EgoyMDI0MDkyNC4wIKXMDSoASAFQAw%3D%3D" target="_blank">Get Directions</a></p>
                     </div>
-
-
                     <div class="contact-info">
                         <h6 class="mb-2"><x-translation key="phone" /></h6>
-                        <p><i class="fa fa-phone"></i> <a href="tel:+998712236508">+998 71 223 65 08</a></p>
-                        <p><i class="fa fa-phone"></i> <a href="tel:+998988888812">+998 98 888 88 12</a></p>
+                        <p><i class="fa fa-phone"></i> <a href="tel:+998712236508">{{$site->phone_1}}</a></p>
+                        <p><i class="fa fa-phone"></i> <a href="tel:+998988888812">{{$site->phone_2}}</a></p>
                     </div>
                     <div class="contact-info">
                         <h6 class="mb-2"><x-translation key="email" /></h6>
-                        <p><i class="fa fa-envelope"></i> <a href="mailto:spektrstar@tayhu.uz">spektrstar@tayhu.uz</a></p>
-                        <p><i class="fa fa-envelope"></i> <a href="mailto:beelindafloor@tayhu.uz">beelindafloor@tayhu.uz</a></p>
+                        <p><i class="fa fa-envelope"></i> <a href="mailto:spektrstar@tayhu.uz">{{$site->email_1}}</a></p>
+                        <p><i class="fa fa-envelope"></i> <a href="mailto:beelindafloor@tayhu.uz">{{$site->email_2}}</a></p>
                     </div>
-
                 </div>
             </div>
         </div>

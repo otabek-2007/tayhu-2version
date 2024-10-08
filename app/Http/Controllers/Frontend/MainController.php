@@ -12,6 +12,7 @@ use App\Models\Partner;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProjectCategory;
+use App\Models\Showroom;
 use App\Models\Team;
 use Illuminate\Http\Request;
 
@@ -53,10 +54,16 @@ class MainController extends Controller
         $company_advantages = CompanyAdvantage::all();
         return view('frontend.about', compact('about', 'company_advantages', 'partners'));
     }
+
     public function blog()
     {
         $blogs = Blog::paginate(9);
         return view('frontend.blog', compact('blogs'));
+    }
+    public function showroom()
+    {
+        $showroom = Showroom::all();
+        return view('frontend.showroom', compact('showroom'));
     }
 
     public function blogSingle($id)
@@ -103,7 +110,7 @@ class MainController extends Controller
                 ->orWhere('description', 'LIKE', '%' . $searchTerm . '%');
         });
         dd($request->input('filter'));
-       
+
         $query->when($request->has('filter'), function ($query) use ($request) {
             switch ($request->input('filter')) {
                 case 'recent':

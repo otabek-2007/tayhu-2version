@@ -26,6 +26,7 @@ Route::get('/service/search', [MainController::class, 'serviceSearch'])->name('s
 Route::get('/service/{id}', [MainController::class, 'service'])->name('service');
 Route::get('/service-single/{id}', [MainController::class, 'serviceSingle'])->name('serviceSingle');
 Route::get('/blog', [MainController::class, 'blog'])->name('blog');
+Route::get('/showroom', [MainController::class, 'showroom'])->name('showroom');
 Route::get('/blog-single/{id}', [MainController::class, 'blogSingle'])->name('blogSingle');
 
 Route::get('/projects', [MainController::class, 'projects'])->name('projects');

@@ -84,7 +84,6 @@
                                                     aria-hidden="true"></i><x-translation key="catalog_link" /></a></li>
                                         <li><a href="{{ route('projects') }}"><i class="fa fa-angle-double-right"
                                                     aria-hidden="true"></i><x-translation key="project_link" /></a></li>
-
                                         <li><a href="{{ route('blog') }}"><i class="fa fa-angle-double-right"
                                                     aria-hidden="true"></i><x-translation key="blog_link" /></a></li>
 
@@ -125,7 +124,7 @@
 
                             <div class="contact-info">
                                 <h6><x-translation key="email" /></h6>
-                                <p><i class="fa fa-envelope"></i> <a href="mailto:spektrstar@tayhu.uz">{{$site->email}}</a></p>
+                                <p><i class="fa fa-envelope"></i> <a href="mailto:spektrstar@tayhu.uz">{{$site->email_1}}</a></p>
 
                             </div>
                         </div>
@@ -169,6 +168,7 @@
     <script src="/assets/js/main.js"></script>
     <script src="/assets/js/nice-select.js"></script>
     <script src="/assets/js/main.js"></script>
+    <script src="/asset/js/configurator.js"></script>
 </body>
 
 </html>
