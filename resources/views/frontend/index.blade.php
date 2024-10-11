@@ -1,571 +1,491 @@
 @extends('layouts.frontend')
 @section('content')
-<!-- Start Slider Are -->
-<header id="slider-home" class="slider slider-prlx bg-b">
-    <div class="swiper-container parallax-slider">
-        <div class="swiper-wrapper">
-            @foreach($banners as $banner)
-            <div class="swiper-slide">
-                <div class="bg-img valign" style="object-fit: cover;" data-background="{{ asset('storage/' . str_replace('\\', '/', $banner->image)) }}" data-overlay-dark="5">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12">
-                                <div class="caption text-center">
-                                    <h2>{!! $banner->getTranslatedAttribute('title', app()->getLocale()) !!}</h2>
-                                    <span class="back-text">{!! $banner->getTranslatedAttribute('body', app()->getLocale()) !!}</span>
-                                    <h1>{!! $banner->getTranslatedAttribute('background_word', app()->getLocale()) !!}</h1>
-                                    <p style="max-width: 650px; margin: 0 auto;">{!! $banner->getTranslatedAttribute('content', app()->getLocale()) !!}</p>
+<div id="smooth-wrapper">
+    <div id="smooth-content">
+        <!-- Hero Section Start -->
+        <section class="hero-section hero-3">
+            <div class="swiper-dot-2">
+                <div class="dot"></div>
+            </div>
+            <div class="swiper hero-slider-3">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="hero-image"
+                            style="background-image: url('assets/img/new-images/main-section-image-2.png')">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="hero-content">
+                                        <a href="https://youtu.be/tfkGO2UDkJY?si=eqjyviOSFrmcyfvm"
+                                            data-animation="fadeInUp" data-delay="1.3s"
+                                            class="video-btn ripple video-popup">
+                                            <i class="fas fa-play"></i>
+                                        </a>
+                                        <h1 data-animation="fadeInUp" data-delay="1.5s">
+                                            Excellence in Wall and Ceiling Panel Solutions
+                                        </h1>
+                                        <p data-animation="fadeInUp" data-delay="1.7s">
+                                            Delivering Superior Craftsmanship with Cutting-Edge Designs
+                                        </p>
+                                        <div class="hero-button">
+                                            <a href="about.html" data-animation="fadeInUp" data-delay="1.9s"
+                                                class="theme-btn bg-white">Explore more<i
+                                                    class="fa-solid fa-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="hero-image"
+                            style="background-image: url('assets/img/new-images/main-section-img-1.png')">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="hero-content">
+                                        <a href="https://www.youtube.com/watch?v=Cn4G2lZ_g2I"
+                                            data-animation="fadeInUp" data-delay="1.3s"
+                                            class="video-btn ripple video-popup">
+                                            <i class="fas fa-play"></i>
+                                        </a>
+                                        <h1 data-animation="fadeInUp" data-delay="1.5s">
+                                            Excellence in Wall and Ceiling Panel Solutions
+                                        </h1>
+                                        <p data-animation="fadeInUp" data-delay="1.7s">
+                                            Delivering Superior Craftsmanship with Cutting-Edge Designs
+                                        </p>
+                                        <div class="hero-button">
+                                            <a href="about.html" data-animation="fadeInUp" data-delay="1.9s"
+                                                class="theme-btn bg-white">Explore more<i
+                                                    class="fa-solid fa-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="hero-image"
+                            style="background-image: url('assets/img/new-images/main-section-img-3.png');">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="hero-content">
+                                        <a href="https://www.youtube.com/watch?v=Cn4G2lZ_g2I"
+                                            data-animation="fadeInUp" data-delay="1.3s"
+                                            class="video-btn ripple video-popup">
+                                            <i class="fas fa-play"></i>
+                                        </a>
+                                        <h1 data-animation="fadeInUp" data-delay="1.5s">
+                                            Excellence in Wall and Ceiling Panel Solutions
+                                        </h1>
+                                        <p data-animation="fadeInUp" data-delay="1.7s">
+                                            Delivering Superior Craftsmanship with Cutting-Edge Designs
+                                        </p>
+                                        <div class="hero-button">
+                                            <a href="about.html" data-animation="fadeInUp" data-delay="1.9s"
+                                                class="theme-btn bg-white">Explore more<i
+                                                    class="fa-solid fa-arrow-right"></i></a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            @endforeach
-        </div>
-        <div class="swiper-pagination"></div>
-    </div>
-</header>
-<!-- End Slider Area -->
+        </section>
 
-
-<!-- Services Section Start -->
-<div id="services" class="section-padding pb-0">
-    <div class="container position-relative">
-
-        <div class="row d-flex align-items-center position-relative mtm-150">
-            <!-- single service -->
-            <div class="col-lg-4 col-md-4 col-sm-12 wow kar-theme-single-service fadeInLeft text-center"
-                data-wow-delay="0.2s">
-                <div class="zr-theme-single-service-card flip">
-                    <img src="assets/images/icons/quality-icon.svg" alt="image">
-                    <h5><x-translation key="quality" /><br></h5>
-                    <p><x-translation key="quality_text" /></p>
-                    <a class="theme-button-dark mt-20" href="#"><span class="plus">+</span><x-translation key="view_detail"/><span></span></a> 
+        <!-- Service Section Start -->
+        <section class="service-section-33 section-padding">
+            <!-- <div class="shape-1">
+                        <img src="assets/img/service/shape-1.png" alt="img">
+                    </div> -->
+            <div class="container">
+                <div class="section-title text-center">
+                    <h6 class="wow fadeInUp"><i class="fa-solid fa-arrow-left-long"></i>WHAT WE OFFER<i
+                            class="fa-solid fa-arrow-right-long"></i></h6>
+                    <h2 class="splt-txt wow" data-splitting>Our Products That We Provide</h2>
                 </div>
             </div>
-            <!-- single service -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
+                        <div class="service-card-items-2">
+                            <div class="items-shape">
+                                <img src="assets/img/service/items-shape-2.png" alt="img">
+                            </div>
+                            <div class="service-image">
+                                <img src="assets/img/new-images/photo_2024-10-07_18-14-34 (2).jpg" alt="img"
+                                    style="height: 190px; object-fit: cover;">
+                                <div class="icon">
+                                    <img src="assets/img/icon/25.svg" alt="img">
+                                </div>
+                            </div>
+                            <div class="service-content text-center">
+                                <h3><a href="service-details.html">MDF Panels </a></h3>
+                                <p>Versatile and Durable Solutions for Any Interior Design Need</p>
+                                <a href="service-details.html" class="arrow-icon"><i
+                                        class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".4s">
+                        <div class="service-card-items-2">
+                            <div class="items-shape">
+                                <img src="assets/img/service/items-shape-2.png" alt="img">
+                            </div>
+                            <div class="service-image">
+                                <img src="assets/img/new-images/photo_2024-10-07_18-14-34.jpg" alt="img"
+                                    style="height: 190px; object-fit: cover;">
+                                <div class="icon">
+                                    <img src="assets/img/icon/26.svg" alt="img">
+                                </div>
+                            </div>
+                            <div class="service-content text-center">
+                                <h3><a href="service-details.html">Ceiling Panels </a></h3>
+                                <p>Transform Your Space with Elegant and Functional Ceiling Solutions </p>
+                                <a href="service-details.html" class="arrow-icon"><i
+                                        class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".6s">
+                        <div class="service-card-items-2">
+                            <div class="items-shape">
+                                <img src="assets/img/service/items-shape-2.png" alt="img">
+                            </div>
+                            <div class="service-image">
+                                <img src="assets/img/new-images/photo_2024-10-07_18-14-34 (3).jpg" alt="img"
+                                    style="height: 190px; object-fit: cover;">
+                                <div class="icon">
+                                    <img src="assets/img/icon/27.svg" alt="img">
+                                </div>
+                            </div>
+                            <div class="service-content text-center">
+                                <h3><a href="service-details.html">Wall Panels</a></h3>
+                                <p>Elevate Your Walls with Stylish and Contemporary Designs.</p>
+                                <a href="service-details.html" class="arrow-icon"><i
+                                        class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".8s">
+                        <div class="service-card-items-2">
+                            <div class="items-shape">
+                                <img src="assets/img/service/items-shape-2.png" alt="img">
+                            </div>
+                            <div class="service-image">
+                                <img src="assets/img/new-images/window-frame.jpg" alt="img"
+                                    style="height: 190px; object-fit: cover;">
+                                <div class="icon">
+                                    <img src="assets/img/icon/28.svg" alt="img">
+                                </div>
+                            </div>
+                            <div class="service-content text-center">
+                                <h3><a href="service-details.html">Window Frame</a></h3>
+                                <p>Precision-made frames for modern spaces.</p>
+                                <a href="service-details.html" class="arrow-icon"><i
+                                        class="fa-solid fa-arrow-right"></i></a>
+                            </div>
 
-            <!-- single service -->
-            <div class="col-lg-4 col-md-4 col-sm-12 wow kar-theme-single-service fadeInUp text-center"
-                data-wow-delay="0.3s">
-                <div class="zr-theme-single-service-card flip">
-                    <img src="assets/images/icons/trust-icon.svg" alt="image">
-                    <h5><x-translation key="trust" /></h5>
-                    <p><x-translation key="trust_text" /></p>
-                    <a class="theme-button-dark mt-20" href="#"><span class="plus">+</span><x-translation key="view_detail"/><span></span></a> 
-                </div>
-            </div>
-            <!-- single service -->
-
-            <!-- single service -->
-            <div class="col-lg-4 col-md-4 col-sm-12 wow kar-theme-single-service fadeInRight text-center"
-                data-wow-delay="0.4s">
-                <div class="zr-theme-single-service-card flip">
-                    <img src="assets/images/icons/professionalism-icon.svg" alt="image">
-                    <h5><x-translation key="professionalism" /></h5>
-                    <p><x-translation key="professionalism_text" /></p>
-                    <a class="theme-button-dark mt-20" href="#"><span class="plus">+</span><x-translation key="view_detail"/><span></span></a> 
-                </div>
-            </div>
-            <!-- single service -->
-
-        </div>
-    </div>
-</div>
-<!-- Services Section End -->
-
-
-<!-- Start Why us Section -->
-<div id="about-us" class="about-us section-padding">
-    <div class="container">
-        <div class="guarantee-content">
-            <div class="row mb-30">
-                <div class="col-lg-6 col-md-12">
-                    <div class="single-services-item">
-                        <div class="services-heading">
-                            <h2>{!! $intoFuture->getTranslatedAttribute('title', app()->getLocale()) !!}</h2>
-                            <p>{!! $intoFuture->getTranslatedAttribute('content', app()->getLocale()) !!}</p>
-                            <br>
-
-                            <a class="theme-button-dark mt-20" href="{{route('about')}}"><span class="plus">+</span><x-translation key="read_more" /><span></span></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12">
-                    <img src="{{ asset('storage/' . str_replace('\\', '/', $intoFuture->image)) }}" class="img-fluid" alt="image">
-                </div>
             </div>
-        </div>
-    </div>
-</div>
-<!-- Start Counter Section Start -->
-<div id="counter" class="counter-area section-padding pt-0">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                <div class="counter-container fadeInUp wow" data-wow-delay="0.2s">
-                    <img src="assets/images/icons/wide-icon.svg" alt="image">
-                    <div class="counter" data-target="{{$clients->wide_assortment}}"></div>
-                    <span><x-translation key="wide_assortment" /></span>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                <div class="counter-container fadeInUp wow" data-wow-delay="0.4s">
-                    <img src="assets/images/icons/custumer.svg" alt="image">
-                    <div class="counter" data-target="{{$clients->happy_client}}"></div>
-                    <span><x-translation key="happy_clients" /></span>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                <div class="counter-container fadeInUp wow" data-wow-delay="0.6s">
-                    <img src="assets/images/icons/architect.svg" alt="image">
-                    <div class="counter" data-target="{{$clients->experiense}}"></div>
-                    <span> <x-translation key="experience" /></span>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                <div class="counter-container fadeInUp wow" data-wow-delay="0.8s">
-                    <img src="assets/images/icons/partnership-icon-2.svg" alt="image" style="color: #FFA500;">
-                    <div class="counter" data-target="{{$clients->partnerships}}"></div>
-                    <span><x-translation key="partnerships" /></span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Counter Section Start -->
-<div class="single-page">
-    <div class="container">
-        <nav aria-label="breadcrumb single-page">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#"><x-translation key="home_link" /></a></li>
-                <li class="breadcrumb-item active" aria-current="page"><x-translation key="our_team_link" /></li>
-            </ol>
-        </nav>
-    </div>
-</div>
+        </section>
 
-<!-- Team Section Start -->
-<div id="team" class="team section-padding">
-    <div class="container aos-init aos-animate" data-aos="fade-up">
-
-        <div class="section-title">
-            <h2><x-translation key="our_team_link" /></h2>
-            <h5><x-translation key="our_team_text" /></h5>
-        </div>
-
-        <div class="row gy-4">
-            @foreach($teams as $item)
-            <div class="col-xl-3 col-md-6 col-sm-6 d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-                <div class="member flip">
-                    <img src="{{ asset('storage/' . str_replace('\\', '/', $item->image_url)) }}" class="img-fluid" alt="">
-                    <h4>{{$item->getTranslatedAttribute('name')}}
-                    </h4>
-                    <span>{{$item->getTranslatedAttribute('position')}}</span>
-                </div>
-            </div><!-- End Team Member -->
-
-            @endforeach
-        </div>
-
-    </div>
-</div>
-<!-- Gallery Section Start -->
-<section id="gallery" class="gallery-area section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <div class="section-title">
-                    <h2><x-translation key="our_project" /></h2>
-                    <h5><x-translation key="our_project_text" /></h5>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="gallery-list">
-                    <ul class="nav" id="gallery-flters">
-                        <li class="filter filter-active" data-filter=".all"><x-translation key="all_link" /><span></span></li>
-                        <li class="filter" data-filter=".Construction"><x-translation key="construction_link" /><span></span></li>
-                        <li class="filter" data-filter=".Electrical"><x-translation key="electrical_link" /><span></span></li>
-                        <li class="filter" data-filter=".Architect"><x-translation key="architect_link" /><span></span></li>
-                        <li class="filter" data-filter=".Building"><x-translation key="building_link" /><span></span></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="gallery-container">
-                <div class="row"> <!-- Add a row here to wrap the grid items -->
-                    <!-- Electrical Projects -->
-                    @foreach($electrical as $project)
-                    <div class="col-lg-3 col-md-4 col-sm-6 gallery-grid-item Electrical all">
-                        <div class="gallery-item">
-                            @if(is_array($project->images_array) && count($project->images_array) > 0)
-                            <img class="image-1" src="{{ asset('storage/' . $project->images_array[0]) }}" alt="Product Image">
-                            @else
-                            <p>No images available.</p>
-                            @endif
-                            <div class="gallery-img-overlay">
-                                <div class="gallery-content">
-                                    <div class="top">
-                                        <a href="/project-single/{{$project->id}}" class="poplink mr-7">
-                                            <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
-                                        </a>
-                                        <a href="assets/images/photos/gallery-1.jpg" class="popimg">
-                                            <span class="icon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
-                                        </a>
+        <!-- About Section Start -->
+        <section class="about-section-3 fix section-padding section-bg bg-cover"
+            style="background-image: url('assets/img/about/bg-shape.png');">
+            <div class="container">
+                <div class="about-wrapper-3">
+                    <div class="row g-5">
+                        <div class="col-xl-6">
+                            <div class="about-content">
+                                <div class="section-title">
+                                    <h6 class="wow fadeInUp"><i class="fa-solid fa-arrow-left-long"></i>About Our
+                                        Company<i class="fa-solid fa-arrow-right-long"></i></h6>
+                                    <h2 class="splt-txt wow" data-splitting>Looking into the future</h2>
+                                </div>
+                                <p class="mt-3 mt-md-0 wow fadeInUp" data-wow-delay=".4s">
+                                    Our company has been producing high-quality plastic panels for walls and
+                                    ceilings for many years. The company has a unique brand and position in the
+                                    global market, and today it delights more than a hundred customers with its
+                                    products. In recent years, the company has also launched the production of MDF
+                                    panels and plans to reach new heights in this field. </p>
+                                <div class="row g-4">
+                                    <div class="col-lg-7 wow fadeInUp" data-wow-delay=".3s">
+                                        <ul class="list">
+                                            <li>
+                                                <i class="fa-sharp fa-solid fa-check-double"></i>
+                                                100% Satisfaction Work
+                                            </li>
+                                            <li>
+                                                <i class="fa-sharp fa-solid fa-check-double"></i>
+                                                Professional Team
+                                            </li>
+                                            <li>
+                                                <i class="fa-sharp fa-solid fa-check-double"></i>
+                                                Flexible & Cost Effective
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <div class="info">
-                                        <a href="/project-single/{{$project->id}}" class="poplink">
-                                            {{ $project->getTranslatedAttribute('title') }} <!-- Use the project title dynamically -->
-                                        </a>
-                                        <p>{!! Str::words($project->getTranslatedAttribute('content', app()->getLocale()), 3, '...') !!}</p> <!-- Dynamic project description -->
+                                    <div class="col-lg-5 wow fadeInUp" data-wow-delay=".5s">
+                                        <div class="video-image">
+                                            <img src="assets/img/new-images/tayhu-company-images/bg-4 1.png"
+                                                alt="img" style="height: 164px !important; object-fit: cover;">
+                                            <div class="video-box">
+                                                <a href="https://www.youtube.com/watch?v=Cn4G2lZ_g2I"
+                                                    class="video-btn video-popup">
+                                                    <i class="fas fa-play"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="about-author">
+                                    <a href="about.html" class="theme-btn wow fadeInUp" data-wow-delay=".3s">Explore
+                                        more <i class="fa-solid fa-arrow-right"></i></a>
+                                    <div class="author-image wow fadeInUp" data-wow-delay=".5s">
+                                        <img src="assets/img/about/author.png" alt="author-img">
+                                        <div class="content">
+                                            <p>Tayhu, CEO</p>
+                                            <h4>I.Mamatqulova</h4>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    @endforeach
-
-                    <!-- Building Projects -->
-                    @foreach($building as $project)
-                    <div class="col-lg-3 col-md-4 col-sm-6 gallery-grid-item Building all">
-                        <div class="gallery-item">
-                            @if(is_array($project->images_array) && count($project->images_array) > 0)
-                            <img class="image-1" src="{{ asset('storage/' . $project->images_array[0]) }}" alt="Product Image">
-                            @else
-                            <p>No images available.</p>
-                            @endif
-                            <div class="gallery-img-overlay">
-                                <div class="gallery-content">
-                                    <div class="top">
-                                        <a href="/project-single/{{$project->id}}" class="poplink mr-7">
-                                            <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
-                                        </a>
-                                        <a href="assets/images/photos/gallery-1.jpg" class="popimg">
-                                            <span class="icon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
-                                        </a>
-                                    </div>
-                                    <div class="info">
-                                        <a href="/project-single/{{$project->id}}" class="poplink">
-                                            {{ $project->getTranslatedAttribute('title') }} <!-- Use the project title dynamically -->
-                                        </a>
-                                        <p>{!! Str::words($project->getTranslatedAttribute('content', app()->getLocale()), 3, '...') !!}</p> <!-- Dynamic project description -->
-                                    </div>
+                        <div class="col-xl-6">
+                            <div class="about-image wow fadeInUp" data-wow-delay=".3s">
+                                <img src="assets/img/new-images/about-2.jpg" alt="img"
+                                    style="height: 680px; object-fit: cover;">
+                                <div class="arrow-shape">
+                                    <img src="assets/img/about/arrow.png" alt="img">
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @endforeach
-
-                    <!-- Construction Projects -->
-                    @foreach($construction as $project)
-                    <div class="col-lg-3 col-md-4 col-sm-6 gallery-grid-item Construction all">
-                        <div class="gallery-item">
-                            @if(is_array($project->images_array) && count($project->images_array) > 0)
-                            <img class="image-1" src="{{ asset('storage/' . $project->images_array[0]) }}" alt="Product Image">
-                            @else
-                            <p>No images available.</p>
-                            @endif
-
-                            <div class="gallery-img-overlay">
-                                <div class="gallery-content">
-                                    <div class="top">
-                                        <a href="/project-single/{{$project->id}}" class="poplink mr-7">
-                                            <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
-                                        </a>
-                                        <a href="assets/images/photos/gallery-1.jpg" class="popimg">
-                                            <span class="icon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
-                                        </a>
-                                    </div>
-                                    <div class="info">
-                                        <a href="/project-single/{{$project->id}}" class="poplink">
-                                            {{ $project->getTranslatedAttribute('title') }} <!-- Use the project title dynamically -->
-                                        </a>
-                                        <p>{!! Str::words($project->getTranslatedAttribute('content', app()->getLocale()), 3, '...') !!}</p> <!-- Dynamic project description -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-
-                    <!-- Architect Projects -->
-                    @foreach($architect as $project)
-                    <div class="col-lg-3 col-md-4 col-sm-6 gallery-grid-item Architect all">
-                        <div class="gallery-item">
-                            @if(count($project->images_array) > 0)
-                            <img class="image-1" src="{{ asset('storage/' . $project->images_array[0]) }}" alt="Product Image">
-                            @else
-                            <p>No images available.</p>
-                            @endif
-
-                            <div class="gallery-img-overlay">
-                                <div class="gallery-content">
-                                    <div class="top">
-                                        <a href="/project-single/{{$project->id}}" class="poplink mr-7">
-                                            <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
-                                        </a>
-                                        <a href="assets/images/photos/gallery-1.jpg" class="popimg">
-                                            <span class="icon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
-                                        </a>
-                                    </div>
-                                    <div class="info">
-                                        <a href="/project-single/{{$project->id}}" class="poplink">
-                                            {{ $project->getTranslatedAttribute('title') }} <!-- Use the project title dynamically -->
-                                        </a>
-                                        <p>{!! Str::words($project->getTranslatedAttribute('content', app()->getLocale()), 3, '...') !!}</p> <!-- Dynamic project description -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div> <!-- Close the row here -->
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Gallery Section End -->
-
-
-
-
-<!-- Start Reservation Area -->
-<section id="reservation" class="zr-theme-reservation-area section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 text-center">
-                <h2><x-translation key="help_link" /></h2>
-                <h5><x-translation key="help_text" /></h5>
-                <h2><a href="tel:+{{$site->phone_1}}" class="text-white">+{{$site->phone_1}}</a></h2>
-                <div class="mt-20"><a class="theme-button-dark" href="{{route('contact')}}"><span class="plus">+</span><x-translation key="help_link" /><span></span></a></div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End Reservation Area -->
-<!-- Team Section Start -->
-<!-- Team Section End -->
-<!-- Testimonials Section Start -->
-<section id="review" class="testimonial-area section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-title">
-                    <h2><x-translation key="testimonial_link" /></h2>
-                    <h5><x-translation key="people_love" /></h5>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <div id="testimonial-slide" class="owl-carousel owl-theme">
-                    @foreach($testimonials as $item)
-                    <div class="single-testimonial">
-                        <div class="testi-content-inner">
-                            <div class="testimonial-content">
-                                <p>{!! $item->message !!}</p>
-                            </div>
-                            <div class="testimonial-bio">
-                                <div class="bio-info">
-                                    <h3 class="name">{!! $item->name !!}</h3>
-                                </div>
-                            </div>
-                            <div class="rating-box-testimonial">
-                                <ul>
-                                    @for ($i = 1; $i <= 5; $i++)
-                                        <li><i class="fa fa-star {{ $i <= $item->star_rating ? 'selected_star' : '' }}"></i></li>
-                                    @endfor
-                                </ul>
-                            </div>
-                        </div>
+        </section>
+
+        <!-- Project Section Start -->
+        <section class="project-section fix section-padding">
+            <div class="container">
+                <div class="section-title text-center">
+                    <h6 class="wow fadeInUp"><i class="fa-solid fa-arrow-left-long"></i>our complete projects<i
+                            class="fa-solid fa-arrow-right-long"></i></h6>
+                    <h2 class="splt-txt wow" data-splitting>Our Latest Projects</h2>
+                </div>
+            </div>
+            <div class="project-wrapper style-2">
+                <div class="main-box">
+                    <div class="box wow fadeInUp">
+
                     </div>
-                    @endforeach
-                </div>
-                <div class="col-lg-12 col-md-12 nav-item text-center mt-5">
-                    <button style="color:white !important;" class="theme-button-dark" data-toggle="modal" data-target="#testimonial_modal">
-                        <x-translation key="write_review" />
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+                    <div class="box bg-1 wow fadeInUp wow" data-wow-delay=".2s">
 
-<style>
-    .modal-backdrop {
-        display: none;
-    }
-    .custom-alert {
-        display: none;
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background-color: #4CAF50; 
-        color: white;
-        padding: 15px 20px;
-        border-radius: 5px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        font-size: 16px;
-        z-index: 9999;
-        transition: opacity 0.3s ease;
-    }
-    .custom-alert.show {
-        display: block;
-        opacity: 1;
-    }
-</style>
+                    </div>
+                    <div class="box bg-2 wow fadeInUp wow" data-wow-delay=".4s">
 
-<div id="success-alert" class="custom-alert">
-    <p><x-translation key="successfilly_review" /></p>
-</div>
+                    </div>
+                    <div class="box bg-3 wow fadeInUp wow" data-wow-delay=".6s">
 
-<!-- Testimonials modal -->
-<div class="modal fade" id="testimonial_modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header border-0">
-                <h5 class="modal-title" id="exampleModalLongTitle" style="color:#ffa500"><x-translation key="write_review" /></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" style="color: #ffa500">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="col-lg-12 p-0">
-                    <div class="controls">
-                        <form id="testimonialForm" method="POST" action="{{ route('store-testimonial') }}">
-                            @csrf
-                            <input type="hidden" id="star_rating" name="star_rating" value="0">
-                            <div class="rating-box mb-3 col-12 p-0">
-                                <ul id="testimonial_star">
-                                    @for ($i = 1; $i <= 5; $i++)
-                                        <li><i class="fa fa-star" data-index="{{ $i }}"></i></li>
-                                    @endfor
-                                </ul>
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control border-orange px-3 py-3" id="message" name="message" rows="3" placeholder="{{ __('messages.review')}}" required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control border-orange px-3 py-3" id="name" name="name" placeholder="{{ __('messages.name')}}" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control border-orange px-3 py-3" id="last_name" name="last_name" placeholder="{{ __('messages.last')}}" required>
-                            </div>
-                            <div class="text-right">
-                                <button type="submit" class="theme-button-dark"><x-translation key="send_review" /></button>
-                            </div>
-                        </form>
+                    </div>
+                    <div class="box bg-4 active wow fadeInUp wow" data-wow-delay=".8s">
+
+                    </div>
+                    <div class="box bg-5 wow fadeInUp wow" data-wow-delay=".2s">
+
+                    </div>
+                    <div class="box bg-6 wow fadeInUp wow" data-wow-delay=".4s">
+
+                    </div>
+                    <div class="box bg-7 wow fadeInUp wow" data-wow-delay=".6s">
+
+                    </div>
+                    <div class="box bg-8 wow fadeInUp wow" data-wow-delay=".8s">
+
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-
-<!-- Include jQuery and Owl Carousel Scripts -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
-<script>
-    $(document).ready(function() {
-        // Testimonial Carousel
-        $('#testimonial-slide').owlCarousel({
-            loop: true,
-            margin: 10,
-            autoplay: true,
-            autoplayTimeout: 3000,
-            autoplayHoverPause: true,
-            nav: false,
-            dots: false,
-            responsive: {
-                0: { items: 1 },
-                600: { items: 2 },
-                1000: { items: 3 }
-            }
-        });
-
-        // Handle star rating click
-        $('#testimonial_star li i').on('click', function() {
-            var index = $(this).data('index');
-            $('#star_rating').val(index);
-            $('#testimonial_star li i').removeClass('selected_star');
-            $('#testimonial_star li i').each(function(i) {
-                if (i < index) {
-                    $(this).addClass('selected_star');
+            <style>
+                .project-wrapper.style-2 .main-box .box {
+                    background-image: url(./assets/img/new-images/photo_2024-10-07_18-14-34\ \(3\).jpg);
+                    width: 170px !important;
+                    /* width: 25% !important; */
+                    height: 310px;
                 }
-            });
-        });
 
-        // Handle form submission for testimonials
-        $('#testimonialForm').submit(function(e) {
-            e.preventDefault(); // Prevent the default form submission
-
-            var formData = $(this).serialize();
-
-            $.ajax({
-                url: $(this).attr('action'),
-                type: 'POST',
-                data: formData,
-                success: function(response) {
-                    // Show the alert
-                    $('#success-alert').addClass('show');
-
-                    // Hide the alert after 2 seconds
-                    setTimeout(function() {
-                        $('#success-alert').removeClass('show');
-                    }, 2000);
-
-                    // Close the modal
-                    $('#testimonial_modal').modal('hide');
-
-                    // Clear the form
-                    $('#testimonialForm')[0].reset();
-                },
-                error: function(error) {
-                    console.error("Submission failed", error);
-                    // Handle errors if needed
+                .project-wrapper.style-2 .main-box .box.bg-1 {
+                    background-image: url(./assets/img/new-images/photo_2024-10-07_18-28-03.jpg);
+                    /* width: 25% !important; */
                 }
-            });
-        });
-    });
-</script>
 
-<style>
-.selected_star {
-    color: #ffa500;
-}
-.rating-box-testimonial ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
+                .project-wrapper.style-2 .main-box .box.bg-2 {
+                    background-image: url(./assets/img/new-images/photo_2024-10-07_18-27-35.jpg);
+                    /* width: 25% !important; */
 
-.rating-box-testimonial ul li {
-    display: inline-block;
-    margin-right: 5px; /* Adjust spacing between stars as needed */
-}
-.custom-alert {
-    display: none;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: #4CAF50; /* Green for success */
-    color: white;
-    padding: 15px 20px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    font-size: 16px;
-    z-index: 9999;
-    transition: opacity 0.3s ease;
-}
+                }
 
-.custom-alert.show {
-    display: block;
-    opacity: 1;
-}
+                .project-wrapper.style-2 .main-box .box.bg-3 {
+                    background-image: url(./assets/img/new-images/photo_2024-10-07_18-26-48.jpg);
+                    /* width: 25% !important; */
 
+                }
 
+                .project-wrapper.style-2 .main-box .box.bg-4 {
+                    background-image: url(./assets/img/new-images/photo_2024-10-07_18-27-04\ \(2\).jpg);
+                    /* width: 25% !important; */
 
-</style>
+                }
+
+                .project-wrapper.style-2 .main-box .box.bg-5 {
+                    background-image: url(./assets/img/new-images/photo_2024-10-07_18-27-04.jpg);
+                    /* width: 25% !important; */
+
+                }
+
+                .project-wrapper.style-2 .main-box .box.bg-6 {
+                    background-image: url(./assets/img/new-images/photo_2024-10-07_18-26-49.jpg);
+                    /* width: 25% !important; */
+
+                }
+
+                .project-wrapper.style-2 .main-box .box.bg-7 {
+                    background-image: url(./assets/img/new-images/photo_2024-10-07_18-26-49\ \(2\).jpg);
+                    /* width: 25% !important; */
+
+                }
+
+                .project-wrapper.style-2 .main-box .box.bg-8 {
+                    background-image: url(./assets/img/new-images/photo_2024-10-07_18-27-26.jpg );
+                    /* width: 25% !important; */
+
+                }
+            </style>
+        </section>
+
+        <!-- Work Process Section Start -->
+        <section class="work-process-section-3 fix section-padding section-bg-2">
+            <!-- <div class="shape-img">
+                        <img src="assets/img/window-frame.png" alt="img" style="padding-left: 30px; padding-bottom: 20px;">
+                    </div> -->
+            <div class="container">
+                <div class="work-process-wrapper-3">
+                    <div class="row g-5">
+                        <div class="col-lg-6">
+                            <div class="work-process-content">
+                                <div class="work-process-box wow fadeInUp" data-wow-delay=".3s">
+                                    <div class="shape-img">
+                                        <img src="assets/img/new-images/icon-brown.svg" alt="img">
+                                    </div>
+                                    <div class="number">
+                                        01 .
+                                    </div>
+                                    <div class="content">
+                                        <h3>Project Design & Planning</h3>
+                                        <p>We design 3D panels with innovative approaches. Our team creates perfect
+                                            solutions tailored to your needs.</p>
+                                    </div>
+                                </div>
+                                <div class="work-process-box style-2 wow fadeInUp" data-wow-delay=".5s">
+                                    <div class="shape-img">
+                                        <img src="assets/img/new-images/icon-brown.svg" alt="img">
+                                    </div>
+                                    <div class="number">
+                                        02 .
+                                    </div>
+                                    <div class="content">
+                                        <h3>Property Management</h3>
+                                        <p>Through our professional services, we manage your door frames with high
+                                            quality and modern design. Your property is our responsibility!</p>
+                                    </div>
+                                </div>
+                                <div class="work-process-box style-3 wow fadeInUp" data-wow-delay=".3s">
+                                    <div class="shape-img">
+                                        <img src="assets/img/new-images/icon-brown.svg" alt="img">
+                                    </div>
+                                    <div class="number">
+                                        03 .
+                                    </div>
+                                    <div class="content">
+                                        <h3>Final Assemble & Submit</h3>
+                                        <p>Before presenting the final products, we test the quality of each 3D
+                                            panel and door frame. Quality results are our priority!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="work-process-image">
+                                <div class="section-title">
+                                    <h6 class="wow fadeInUp"><i class="fa-solid fa-arrow-left-long"></i>Working
+                                        Process<i class="fa-solid fa-arrow-right-long"></i></h6>
+                                    <h2 class="splt-txt wow" data-splitting>Building The Future's Foundations</h2>
+                                </div>
+                                <div class="track-image mt-4 mt-md-0">
+                                    <img src="assets/img/new-images/window-frame (2).png" alt="img">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achivements Section Start -->
+        <section class="achivements-section fix section-padding">
+            <div class="shape-3">
+                <img src="assets/img/skills/shape-3.png" alt="img">
+            </div>
+            <div class="container">
+                <div class="achivements-wrapper style-3">
+                    <div class="row g-4 justify-content-between">
+                        <div class="col-lg-6">
+                            <div class="achivements-content">
+                                <div class="section-title">
+                                    <h6 class="wow fadeInUp"><i class="fa-solid fa-arrow-left-long"></i>Company
+                                        Status<i class="fa-solid fa-arrow-right-long"></i></h6>
+                                    <h2 class="splt-txt wow" data-splitting>Our Services meets The Highest
+                                        Standards.</h2>
+                                </div>
+                                <p class="mt-3 mt-md-0 wow fadeInUp" data-wow-delay=".3s">
+                                    Our commitment to excellence ensures that every project we undertake meets the
+                                    highest industry standards. We believe that quality service is not just a goal
+                                    but a fundamental principle that drives our operations. </p>
+                                <div class="counter-items-area">
+                                    <div class="counter-content wow fadeInUp" data-wow-delay=".3s">
+                                        <h2><span class="count">45</span>k+</h2>
+                                        <span>project Complete</span>
+                                    </div>
+                                    <div class="counter-content wow fadeInUp" data-wow-delay=".5s">
+                                        <h2><span class="count">25</span>k+</h2>
+                                        <span>Active On Clients</span>
+                                    </div>
+                                    <div class="counter-content wow fadeInUp" data-wow-delay=".7s">
+                                        <h2><span class="count">2.4</span>k+</h2>
+                                        <span>Winning Awards</span>
+                                    </div>
+                                </div>
+                                <a href="about.html" class="theme-btn wow fadeInUp" data-wow-delay=".3s">Learn More
+                                    <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-xxl-4 col-xl-5 col-lg-6 wow fadeInUp" data-wow-delay=".2s">
+                            <div class="achivements-image">
+                                <img src="assets/img/new-images/status-2.jpg" alt="img" style="height: 500px;">
+                                <div class="achivements-image-2 float-bob-y">
+                                    <img src="assets/img/new-images/status-1.jpg" alt="img"
+                                        style="width: 300px; height: 500px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+@endsection
