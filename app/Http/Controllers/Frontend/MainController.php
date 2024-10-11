@@ -10,12 +10,15 @@ use App\Models\IntoFuture;
 use App\Models\OurProject;
 use App\Models\Partner;
 use App\Models\Product;
+use App\Models\Property;
 use App\Models\ProductCategory;
-use App\Models\ProjectCategory;
+use App\Models\AboutOurClient;
 use App\Models\Showroom;
+use App\Models\Size;
 use App\Models\Team;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
-
+use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 class MainController extends Controller
 {
@@ -23,7 +26,9 @@ class MainController extends Controller
     {
         $projects = OurProject::with('category')->get();
         $teams = Team::all();
-        $blogs = Blog::all();
+        $clients = AboutOurClient::first();
+        $blogs = Blog::orderBy('id', 'desc')->take(3)->get();
+        $testimonials = Testimonial::all();
         $partners = Partner::all();
         $construction = OurProject::whereHas('category', function ($query) {
             $query->where('name', 'Construction');
@@ -45,7 +50,31 @@ class MainController extends Controller
         $intoFuture = IntoFuture::first();
 
         // Return the view with the data
-        return view('frontend.index', compact('banners', 'teams', 'blogs', 'intoFuture', 'projects', 'partners', 'construction', 'building', 'architect', 'electrical'));
+        return view('frontend.index', compact('banners', 'projects','clients' , 'teams', 'testimonials', 'blogs', 'intoFuture', 'partners', 'construction', 'building', 'architect', 'electrical'));
+
+    }
+    public function storeTestimonial(Request $request)
+    {
+        // Validate the incoming request data
+        $request->validate([
+            'star_rating' => 'required|min:1|max:5',
+            'message' => 'required|string',
+            'name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255', 
+        ]);
+
+        // Create a new testimonial instance
+        $testimonial = new Testimonial();
+        $testimonial->star_rating = $request->input('star_rating'); // Save the star rating
+        $testimonial->message = $request->input('message'); // Save the message
+        $testimonial->name = $request->input('name'); // Save the name
+        $testimonial->last_name = $request->input('last_name'); // Save the last name
+
+        // Save the testimonial to the database
+        $testimonial->save();
+
+        // Return a response, redirect or show a success message
+        return redirect()->back()->with('success', 'Your testimonial has been submitted.');
     }
     public function about()
     {
@@ -73,16 +102,25 @@ class MainController extends Controller
     }
     public function catalog()
     {
-
         $totalFaqs = ProductCategory::count();
         $halfCount = ceil($totalFaqs / 2);
 
-        $category_first = ProductCategory::orderBy('id', 'desc')->take($halfCount)->withTranslations()->get();
-
-        $category_second = ProductCategory::orderBy('id', 'asc')->take($totalFaqs - $halfCount)->withTranslations()->get();
+        // Fetch categories with product count
+        $category_first = ProductCategory::orderBy('id', 'desc')
+            ->withCount('products') // Count of products in each category
+            ->take($halfCount)
+            ->withTranslations()
+            ->get();
+        
+        $category_second = ProductCategory::orderBy('id', 'asc')
+            ->withCount('products') // Count of products in each category
+            ->take($totalFaqs - $halfCount)
+            ->withTranslations()
+            ->get();
 
         return view('frontend.catalog', compact("category_first", "category_second"));
     }
+
     public function contact()
     {
         return view('frontend.contact');
@@ -92,47 +130,59 @@ class MainController extends Controller
         $teams = Team::all();
         return view('frontend.team', compact('teams'));
     }
-    public function service($id)
+   public function service(Request $request, $id = null)
     {
-        $products = Product::where('category_id', $id)->paginate(10);
-        $categories = ProductCategory::withCount('products')->get();
-
-        return view('frontend.service', compact('products', 'categories'));
-    }
-    public function serviceSearch(Request $request)
-    {
-        $categories = ProductCategory::withCount('products')->get();
+        // Initialize the query builder for products
         $query = Product::query();
+
+        // Apply category filter if $id is provided
+        if ($id) {
+            $query->where('category_id', $id);
+        }
+
+        // Apply property filter if 'property' is present in the request
+        if ($request->has('property')) {
+            $propertyId = $request->input('property');
+            $query->where('property_id', $propertyId); // Assuming 'property_id' exists in the Product model
+        }
+
+        // Apply size filter if 'size' is present in the request
+        if ($request->has('size')) {
+            $query->where('size_id', $request->get('size'));
+        }
 
         $query->when($request->has('query'), function ($query) use ($request) {
             $searchTerm = $request->input('query');
             $query->where('name', 'LIKE', '%' . $searchTerm . '%')
                 ->orWhere('description', 'LIKE', '%' . $searchTerm . '%');
         });
-        dd($request->input('filter'));
 
-        $query->when($request->has('filter'), function ($query) use ($request) {
+        if ($request->has('filter')) {
             switch ($request->input('filter')) {
                 case 'recent':
                     $query->orderBy('created_at', 'desc');
                     break;
-                case 'low_to_high':
-                    $query->orderBy('price', 'asc');
-                    break;
-                case 'high_to_low':
-                    $query->orderBy('price', 'desc');
-                    break;
                 case 'new_added':
                     $query->orderBy('updated_at', 'desc');
                     break;
+                default:
+                    break;
             }
-        });
+        }
 
+        // Get the paginated products
         $products = $query->paginate(10);
-        return view('frontend.service', compact('products', 'categories'));
+
+        // Fetch categories with product count
+        $categories = ProductCategory::withCount('products')->get();
+
+        // Fetch all sizes
+        $sizes = Size::all();
+        $properties = Property::all();
+
+        // Return the view with products, categories, and sizes
+        return view('frontend.service', compact('products', 'categories', 'sizes', 'properties'));
     }
-
-
 
 
     public function serviceSingle($id)
@@ -168,6 +218,7 @@ class MainController extends Controller
     }
     public function projectSingle($id)
     {
-        return view('frontend.project_single');
+        $project = OurProject::find($id);
+        return view('frontend.project_single', compact('project'));
     }
 }

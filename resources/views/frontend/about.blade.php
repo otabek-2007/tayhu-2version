@@ -88,7 +88,7 @@
 </section>
 <!-- End Guarantee Section -->
 <!-- Partner Section Start -->
-<div class="theme-partner-area bg-grey section-padding">
+<div class="theme-partner-area section-padding zr-theme-reservation-area">
     <div class="container">
         <div class="owl-carousel">
             @foreach($partners as $item)

@@ -12,6 +12,8 @@ use App\Observers\ProductObserver;
 use App\Observers\TeamObserver;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,10 +28,13 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
+
     public function boot(): void
     {
-        $site = TayhuControllere::first();
-        View::share('site', $site);
+        if (Schema::hasTable('tayhu_controlleres')) {
+            $site = TayhuControllere::first();
+            View::share('site', $site);
+        }
         
     }
 }

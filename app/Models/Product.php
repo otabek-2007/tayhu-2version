@@ -41,4 +41,8 @@ class Product extends Model
     {
         return $this->belongsTo(ProductModel::class);
     }
+    public function property()
+    {
+        return $this->belongsTo(Property::class);
+    }
 }

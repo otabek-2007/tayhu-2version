@@ -1,5 +1,6 @@
 @extends('layouts.frontend')
 @section('content')
+<link rel="stylesheet" href="./assets/stylesheets/main.css">
 <div class="single-page">
     <div class="container">
         <nav aria-label="breadcrumb single-page">
@@ -20,22 +21,24 @@
                 <div class="col-xl-6 col-lg-6">
                     <div class="row">
                         <div class="col-xl-12 mb-50">
-                            @foreach($category_second as $item)
-                            <div class="tp-project-3-item p-relative">
+                         @foreach($category_second as $item)
+                              <div class="tp-project-3-item p-relative">
                                 <div class="tp-project-3-thumb mb-35">
-                                    <img src="{{ asset('storage/' . str_replace('\\', '/', $item->image)) }}" alt="">
+                                    <img class="tp-project-3-img" src="{{ asset('storage/' . str_replace('\\', '/', $item->image)) }}" alt="">
                                     <div class="tp-project-3-button">
                                         <a href="service/{{$item->id}}"><x-translation key="view_product" /></a>
                                     </div>
                                 </div>
                                 <div class="tp-project-3-content">
                                     <h4 class="tp-project-3-title text-white">
-                                        <a class="text-anim-2" href="service/{{$item->id}}">{{$item->getTranslatedAttribute('name')}}</a>
+                                        <a class="text-anim-2 text-white" href="service/{{$item->id}}">{{$item->getTranslatedAttribute('name')}}</a>
                                     </h4>
-                                    <span>Art , Direction</span>
+                                    <span>({{ ($item->products_count) ? $item->products_count : 0 }})</span> <!-- Display product count here -->
                                 </div>
                             </div>
-                            @endforeach
+                        @endforeach
+
+
                         </div>
                     </div>
                 </div>
@@ -43,19 +46,18 @@
                     <div class="row">
                         <div class="col-xl-12 mb-50">
                             @foreach($category_first as $item)
-                            <div class="tp-project-3-item p-relative">
+                              <div class="tp-project-3-item p-relative">
                                 <div class="tp-project-3-thumb mb-35">
-                                    <img src="{{ asset('storage/' . str_replace('\\', '/', $item->image)) }}" alt="">
+                                    <img class="tp-project-3-img" src="{{ asset('storage/' . str_replace('\\', '/', $item->image)) }}" alt="">
                                     <div class="tp-project-3-button">
                                         <a href="service/{{$item->id}}"><x-translation key="view_product" /></a>
                                     </div>
                                 </div>
                                 <div class="tp-project-3-content">
                                     <h4 class="tp-project-3-title text-white">
-                                        <a class="text-anim-2" href="service/{{$item->id}}"> {{$item->getTranslatedAttribute('name')}}
-                                        </a>
+                                        <a class="text-anim-2 text-white" href="service/{{$item->id}}">{{$item->getTranslatedAttribute('name')}}</a>
                                     </h4>
-                                    <span>Art , Direction</span>
+                                    <span>({{ ($item->products_count) ? $item->products_count : 0 }})</span> <!-- Display product count here -->
                                 </div>
                             </div>
                             @endforeach
@@ -69,5 +71,20 @@
         </div>
     </div>
 </div>
+<style>
+.tp-project-3-item {
+    position: relative;
+    overflow: hidden; /* Ensure that the blurred image does not overflow the container */
+}
+
+.tp-project-3-img {
+    transition: filter 0.3s ease; /* Smooth transition for the filter */
+}
+
+.tp-project-3-item:hover .tp-project-3-img {
+    filter: blur(5px); /* Apply the blur effect on hover */
+}
+
+</style>
 <!-- project area end -->
 @endsection

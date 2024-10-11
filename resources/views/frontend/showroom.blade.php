@@ -4,8 +4,8 @@
     <div class="container">
         <nav aria-label="breadcrumb single-page">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Showroom</li>
+                <li class="breadcrumb-item"><a href="{{ url('/') }}"><x-translation key="home_link" /></a></li>
+                <li class="breadcrumb-item active" aria-current="page"><x-translation key="showroom_link" /></li>
             </ol>
         </nav>
     </div>
@@ -14,14 +14,14 @@
 <div id="page" class="section-padding">
     <div class="container">
         <div class="section-title">
-            <h2>Explore Various Designs and <br> Make Your Selection</h2>
-            <h5>Effortlessly Configure and Preview Your Dream Decor</h5>
+            <h2><x-translation key="explore_designs" /></h2>
+            <h5><x-translation key="dream_decor" /></h5>
         </div>
         <div class="row">
             <div class="col-lg-9">
                 <div class="showroom-container shadow-lg bg-body-tertiary rounded"
                     style="background-image: url('{{ asset('storage/' . str_replace('\\', '/', $showroom[0]->images_array[0])) }}');">
-                    <img src="{{ asset('assets/images/Orqa-fon.png') }}" alt="Showroom Background">
+                    <img src="{{ asset('assets/images/Orqa fon-2.png') }}" alt="Showroom Background">
                 </div>
             </div>
 

@@ -64,7 +64,15 @@ a:hover {
     -webkit-transition: all 0.4s ease-in-out 0s;
     transition: all 0.4s ease-in-out 0s;
 }
-
+.contact-info p:hover i, .contact-info p:hover, .contact-info p:hover a{
+  color: #FFA500 !important;
+}
+.contact-info {
+  cursor: pointer;
+}
+.contact-info a, .contact-info p {
+  transition: 0s;
+}
 a:hover,
 a:focus {
     color: #ffa500;
@@ -295,7 +303,13 @@ button:focus {
     outline: none;
     box-shadow: none;
 }
-
+.hovered {
+    transition: transform 0.1s ease-in-out; /* Add transition */
+    transform: scale(1);
+  }
+  .hovered:hover {
+    transform: scale(1.1) !important;
+  }
 .button {
     position: relative;
     z-index: 2;
@@ -3904,6 +3918,16 @@ hr {
 /**************************************
  * Testimonial Section Style
  *************************************/
+
+#testimonial_star li i{
+  color: lightgray;
+  cursor:pointer;
+}
+.selected_star{
+  color: #efed40 !important;
+
+}
+
 
 .testimonial-area {
     text-align: center;

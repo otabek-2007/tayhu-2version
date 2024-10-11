@@ -1,19 +1,7 @@
 <div class="side-menu sidebar-inverse">
     <nav class="navbar navbar-default" role="navigation">
         <div class="side-menu-container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="{{ route('voyager.dashboard') }}">
-                    <div class="container title">
-                        <?php $admin_logo_img = Voyager::setting('admin.icon_image', ''); ?>
-                        @if($admin_logo_img == '')
-                            <img width="200px" style="width: ;" src="{{ voyager_asset('images/logo-icon-light.png') }}" alt="Logo Icon">
-                        @else
-                            <img width="100px" src="{{ Voyager::image($admin_logo_img) }}" alt="Logo Icon">
-                        @endif
-                    </div>
-                    <!-- <div class="title">{{Voyager::setting('admin.title', 'VOYAGER')}}</div> -->
-                </a>
-            </div><!-- .navbar-header -->
+     
 
             <div class="panel widget center bgimage"
                  style="background-image:url({{ Voyager::image( Voyager::setting('admin.bg_image'), voyager_asset('images/bg.jpg') ) }}); background-size: cover; background-position: 0px;">

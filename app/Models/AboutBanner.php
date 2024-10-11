@@ -10,5 +10,5 @@ use TCG\Voyager\Traits\Translatable;
 class AboutBanner extends Model
 {
     use HasFactory, Translatable;
-    protected $translatable = ['title', 'body', 'content'];
+    protected $translatable = ['title', 'body', 'content', 'background_word'];
 }

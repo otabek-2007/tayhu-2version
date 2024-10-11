@@ -39,7 +39,7 @@
                 <div class="row"> <!-- Add a row here to wrap the grid items -->
                     <!-- Electrical Projects -->
                     @foreach($electrical as $project)
-                    <div class="col-lg-3 col-md-4 col-sm-6 gallery-grid-item Electrical">
+                    <div class="col-lg-3 col-md-4 col-sm-6 gallery-grid-item Electrical all">
                         <div class="gallery-item">
                             @if(is_array($project->images_array) && count($project->images_array) > 0)
                             <img class="image-1" src="{{ asset('storage/' . $project->images_array[0]) }}" alt="Product Image">
@@ -68,40 +68,10 @@
                     </div>
                     @endforeach
 
-                    <!-- All Projects -->
-                    @foreach($projects as $project)
-                    <div class="col-lg-3 col-md-4 col-sm-6 gallery-grid-item all">
-                        <div class="gallery-item">
-                            @if(is_array($project->images_array) && count($project->images_array) > 0)
-                            <img class="image-1" src="{{ asset('storage/' . $project->images_array[0]) }}" alt="Product Image">
-                            @else
-                            <p>No images available.</p>
-                            @endif
-                            <div class="gallery-img-overlay">
-                                <div class="gallery-content">
-                                    <div class="top">
-                                        <a href="/project-single/{{$project->id}}" class="poplink mr-7">
-                                            <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
-                                        </a>
-                                        <a href="assets/images/photos/gallery-1.jpg" class="popimg">
-                                            <span class="icon"><i class="fa fa-picture-o" aria-hidden="true"></i></span>
-                                        </a>
-                                    </div>
-                                    <div class="info">
-                                        <a href="/project-single/{{$project->id}}" class="poplink">
-                                            {{ $project->getTranslatedAttribute('title') }} <!-- Use the project title dynamically -->
-                                        </a>
-                                        <p>{!! Str::words($project->getTranslatedAttribute('content', app()->getLocale()), 3, '...') !!}</p> <!-- Dynamic project description -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
 
                     <!-- Building Projects -->
                     @foreach($building as $project)
-                    <div class="col-lg-3 col-md-4 col-sm-6 gallery-grid-item Building">
+                    <div class="col-lg-3 col-md-4 col-sm-6 gallery-grid-item Building all">
                         <div class="gallery-item">
                             @if(is_array($project->images_array) && count($project->images_array) > 0)
                             <img class="image-1" src="{{ asset('storage/' . $project->images_array[0]) }}" alt="Product Image">
@@ -132,7 +102,7 @@
 
                     <!-- Construction Projects -->
                     @foreach($construction as $project)
-                    <div class="col-lg-3 col-md-4 col-sm-6 gallery-grid-item Construction">
+                    <div class="col-lg-3 col-md-4 col-sm-6 gallery-grid-item Construction all">
                         <div class="gallery-item">
                             @if(is_array($project->images_array) && count($project->images_array) > 0)
                             <img class="image-1" src="{{ asset('storage/' . $project->images_array[0]) }}" alt="Product Image">
@@ -164,7 +134,7 @@
 
                     <!-- Architect Projects -->
                     @foreach($architect as $project)
-                    <div class="col-lg-3 col-md-4 col-sm-6 gallery-grid-item Architect">
+                    <div class="col-lg-3 col-md-4 col-sm-6 gallery-grid-item Architect all">
                         <div class="gallery-item">
                             @if(count($project->images_array) > 0)
                             <img class="image-1" src="{{ asset('storage/' . $project->images_array[0]) }}" alt="Product Image">

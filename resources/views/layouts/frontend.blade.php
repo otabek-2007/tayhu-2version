@@ -13,7 +13,6 @@
     <link href="/assets/stylesheets/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/stylesheets/swiper.min.css" rel="stylesheet">
     <link href="/assets/stylesheets/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/stylesheets/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -29,7 +28,6 @@
     <link href="../../../css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link href="../../../css2-1?family=Rajdhani&display=swap" rel="stylesheet">
     <link href="../../../css2-2?family=Monoton&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/stylesheets/main.css">
 
 </head>
 
@@ -66,9 +64,10 @@
                             </div>
 
                             <div class="footer-social-icon">
-                                <a href="{{$site->facebook_link}}"><i class="fa-brands fa-facebook-f facebook-bg"></i></a>
-                                <a href="{{$site->telegram_link}}"><i class="fa-brands fa-telegram"></i></a>
-                                <a href="{{$site->google_link}}"><i class="fa-brands fa-google google-bg"></i></a>
+                                 <a href="{{$site->facebook_link}}"><i class="fa-brands fa-facebook-f facebook-bg"></i></a>
+                <a href="{{$site->telegram_link}}"><i class="fa-brands fa-telegram"></i></a>
+                <a href="{{$site->youtube_link}}"><i class="fa-brands fa-youtube youtube-bg"></i></a>
+                <a href="{{$site->instagram_link}}"><i class="fa-brands fa-instagram instagram-bg"></i></a>
                             </div>
                         </div>
                     </div>
@@ -118,13 +117,14 @@
                             </div>
                             <div class="contact-info">
                                 <h6><x-translation key="phone" /></h6>
-                                <p><i class="fa fa-phone"></i> <a href="tel:+998712236508">{{$site->phone_1}}</a></p>
-                                <p><i class="fa fa-phone"></i> <a href="tel:+998988888812">{{$site->phone_2}}</a></p>
+                                <p><i class="fa fa-phone"></i> <a href="tel:+{{$site->phone_1}}">+{{$site->phone_1}}</a></p>
+                                <p><i class="fa fa-phone"></i> <a href="tel:+{{$site->phone_2}}">+{{$site->phone_2}}</a></p>
                             </div>
 
                             <div class="contact-info">
                                 <h6><x-translation key="email" /></h6>
-                                <p><i class="fa fa-envelope"></i> <a href="mailto:spektrstar@tayhu.uz">{{$site->email_1}}</a></p>
+                                <p><i class="fa fa-envelope"></i> <a href="mailto:{{$site->email_1}}">{{$site->email_1}}</a></p>
+                                <p><i class="fa fa-envelope"></i> <a href="mailto:{{$site->email_2}}">{{$site->email_2}}</a></p>
 
                             </div>
                         </div>
