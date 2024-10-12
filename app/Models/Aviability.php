@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Traits\Translatable;
 
-class Team extends Model
+class Aviability extends Model
 {
     use Translatable;
-    protected $translatable = ['name', 'description', 'position', 'about_text'];
+    protected $translatable = ['type'];
 }

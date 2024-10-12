@@ -8,7 +8,7 @@ use TCG\Voyager\Traits\Translatable;
 class Product extends Model
 {
     use Translatable;
-    protected $translatable = ['name', 'description'];
+    protected $translatable = ['name', 'description', 'easy_maintenance', 'modern_design', 'quality_material', 'natural_clean'];
     protected $appends = ['images_array'];
 
     public function getImagesArrayAttribute()

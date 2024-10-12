@@ -1,138 +1,190 @@
 @extends('layouts.frontend')
 @section('content')
 <link rel="stylesheet" href="{{asset('assets/stylesheets/main.css')}}">
-<div class="single-page">
+<!-- Breadcrumb Section Start -->
+<div class="breadcrumb-wrapper bg-cover" style="background-image: url('assets/img/service/product-cover.JPG');">
+    <div class="shape-image float-bob-y">
+        <!-- <img src="assets/img/vector.png" alt="img"> -->
+    </div>
     <div class="container">
-        <nav aria-label="breadcrumb single-page">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}"><x-translation key="home_link" /></a></li>
-                <li class="breadcrumb-item active" aria-current="page"><x-translation key="construction_service" /></li>
-            </ol>
-        </nav>
+        <div class="breadcrumb-wrapper-items">
+            <div class="page-heading">
+                <div class="breadcrumb-sub-title">
+                    <h1 class="wow fadeInUp" data-wow-delay=".3s">Product</h1>
+                </div>
+                <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".5s">
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <i class="fa-sharp fa-solid fa-slash-forward"></i>
+                    </li>
+                    <li>
+                        Product
+                    </li>
+                </ul>
+            </div>
+            <div class="breadcrumb-image">
+                <!-- <img src="assets/img/breadcrumb-image.png" alt="img" class="float-bob-x"> -->
+                <div class="bar-shape">
+                    <!-- <img src="assets/img/breadcrumb-bar.png" alt="img"> -->
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<!-- details area start -->
-<div class="product-details-area pt-120">
-    <div class="tp-product-details-top pb-70">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-6 col-lg-6">
-                    <div class="tab-content m-img" id="productDetailsNavContent">
+<!-- Service Details Section Start -->
+<section class="service-details-section section-padding">
+    <div class="container">
+        <div class="service-details-wrapper">
+            <div class="row g-4">
+                <div class="col-12 col-lg-8">
+                    <div class="service-details-image reveal image-anime">
                         @php
-                        $images = json_decode($singleProduct->images);
+                        $images=json_decode($singleProduct->images);
                         @endphp
-                        @if($images)
-                        @foreach($images as $index => $image)
-                        <div class="tab-pane fade @if($index == 0) active show @endif" id="nav-{{ $index + 1 }}" role="tabpanel" aria-labelledby="nav-{{ $index + 1 }}-tab" tabindex="0">
-                            <div class="tp-product-details-nav-main-thumb">
-                                <img id="mainImage" src="{{ asset('storage/' . str_replace('\\', '/', $images[0])) }}" alt="image">
-                            </div>
-                        </div>
-                        @endforeach
-                        @else
-                        <span>Not Found</span>
-                        @endif
+                        <img src="{{ asset('storage/' . str_replace('\\', '/', $images[0])) }}" style="height:850px" alt="img">
                     </div>
-                    <nav>
-                        @php
-                        // JSON satrini massivga aylantirish
-                        $images = json_decode($singleProduct->images);
-                        @endphp
-
-                        <div class="nav nav-tabs d-flex justify-content-center justify-content-lg-start" id="productDetailsNavThumb" role="tablist" style="border: 0px;">
-                            @if($images)
-                            @foreach($images as $index => $image)
-                            <button class="nav-link @if($index == 0) active @endif"
-                                id="nav-{{ $index + 1 }}-tab"
-                                data-bs-toggle="tab"
-                                data-bs-target="#nav-{{ $index + 1 }}"
-                                type="button"
-                                role="tab"
-                                aria-controls="nav-{{ $index + 1 }}"
-                                aria-selected="{{ $index == 0 ? 'true' : 'false' }}"
-                                onclick="document.getElementById('mainImage').src = '{{ asset('storage/' . str_replace('\\', '/', $image)) }}'">
-                                <img width="100px" height="100px" src="{{ asset('storage/' . str_replace('\\', '/', $image)) }}" style="object-fit: cover; border:0px;" alt="image">
-                            </button>
-                            @endforeach
+                    <div class="service-details-content">
+                        <h2>{!! $singleProduct->getTranslatedAttribute('name', app()->getLocale())!!}</h2>
+                        <p>
+                        <h3 class="mb-2">Xususiyatlari:</h3>
+                        <ul class="ps-3 pb-3" style="list-style-type: disc;">
+                            @if($singleProduct->property)
+                            <li><b>{{ $singleProduct->property->getTranslatedAttribute('name', app()->getLocale())}}: </b> {!! $singleProduct->property->getTranslatedAttribute('description', app()->getLocale())!!}</li>
                             @else
-                            <span>Not Found</span>
+                            <p>Properties has not</p>
                             @endif
-                        </div>
-                    </nav>
+                        </ul>
 
 
-                </div>
-                <!-- col end -->
-                <div class="col-xl-6 col-lg-6">
-                    <div class="tp-product-details-wrapper">
-                        <div class="tp-product-details-title-content">
-                            <h3 class="single-product-title d-inline-block mb-20">{!! $singleProduct->getTranslatedAttribute('name', app()->getLocale()) !!}</h3>
-                        </div>
-                        <!-- inventory details -->
-                        <div class="tp-product-details-inventory d-sm-flex flex-wrap align-items-center mb-20">
-                            <div class="tp-product-details-stock">
-                                <h4><x-translation key="brand_text" />: <span class="brand-type"> {!! ($singleProduct->brands == null) ? "Has not Brand" : $singleProduct->brands->getTranslatedAttribute('name', app()->getLocale()) !!}</span></h4>
-                            </div>
-
-                        </div>
-                        <p class="tp-product-details-price-dsc mb-25">{!! $singleProduct->getTranslatedAttribute('description', app()->getLocale()) !!}</p>
-                        <!-- model -->
-                        <div class="tp-product-details-model">
-                            <h4><x-translation key="model_text" />: <span> {!! ($singleProduct->models == null) ? "Has not Model" : $singleProduct->brands->getTranslatedAttribute('name', app()->getLocale()) !!}</span></h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- details area end -->
-
-<!-- product area start -->
-<div class="tp-product-area pt-115 pb-110 p-relative fix">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="tp-product-title-box mb-50">
-                    <span class="tp-section-subtitle">Featured Window & Door Product</span>
-                    <h3 class="tp-section-title">Releated Products</h3>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="tp-prduct-wrapper">
-                    <div class="swiper-container tp-product-active-3">
-                        <div class="swiper-wrapper">
-                            @foreach($categoryProduct as $item)
-                            <div class="swiper-slide">
-                                <div class="tp-product-item p-relative">
-                                    <div class="tp-product-thumb-box p-relative mb-25">
-                                        <a href="/service-single/{{$item->id}}">
-                                            @if(count($item->images_array) > 0)
-                                            @foreach(array_slice($item->images_array, 0, 2) as $image) <!-- Take only the first 2 images -->
-                                            <img class="image-{{ $loop->index + 1 }}" src="{{ asset('storage/' . $image) }}" alt="Product Image">
-                                            @endforeach
-                                            @else
-                                            <p>No images available.</p>
-                                            @endif
-                                        </a>
-                                    </div>
-                                    <div class="tp-product-content text-center">
-                                        <h4 class="tp-product-title"><a href="/service-single/{{$item->id}}" class="text-anim" style="color: inherit;">
-                                                {!! $item->getTranslatedAttribute('name', app()->getLocale()) !!}</a></h4>
-
-                                    </div>
+                        </p>
+                        <div class="row g-4">
+                            <div class="col-lg-7">
+                                <div class="service-details-image reveal image-anime">
+                                    @if($images[1])
+                                    <img src="{{ asset('storage/' . str_replace('\\', '/', $images[1])) }}" style="height:450px" alt="img">
+                                    @else
+                                    <p>Images has not</p>
+                                    @endif
                                 </div>
                             </div>
-                            @endforeach
+                            <div class="col-lg-5">
+                                <div class="content">
+                                    <h3>Xizmatlar Foydasi:</h3>
+                                    <p class="mt-2 mb-2">Nega Blooming Beige Wall Panel tanlashingiz kerak?</p>
+
+                                </div>
+                                <ul class="details-list">
+                                    <li><i class="fa-solid fa-circle-check"></i><x-translation key="modern_design" />:{{$singleProduct->getTranslatedAttribute('modern_design', app()->getLocale())}}</li>
+                                    <li><i class="fa-solid fa-circle-check"></i><x-translation key="quality_material" />:{{$singleProduct->getTranslatedAttribute('quality_material', app()->getLocale())}} </li>
+                                    <li><i class="fa-solid fa-circle-check"></i><x-translation key="easy_maintenance" />: {{$singleProduct->getTranslatedAttribute('easy_maintenance', app()->getLocale())}}</li>
+                                    <li><i class="fa-solid fa-circle-check"></i><x-translation key="environmentally_friendly" />: {{$singleProduct->getTranslatedAttribute('natural_clean', app()->getLocale())}}</li>
+                                </ul>
+                            </div>
                         </div>
+                        <h4><x-translation key="simple_step" /> </h4>
+                        <p class="mt-3"><x-translation key="change_door_step" />:</p>
+                        <div class="row g-4 mt-2">
+                            <div class="col-xl-4 col-lg-6 col-md-6">
+                                <div class="service-details-box">
+                                    <div class="icon">
+                                        <img src="assets/img/icon/15.svg" alt="img">
+                                        <h5><x-translation key="planning" /></h5>
+                                    </div>
+                                    <p><x-translation key="choose_panels" /></p>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-6 col-md-6">
+                                <div class="service-details-box">
+                                    <div class="icon">
+                                        <img src="assets/img/icon/17.svg" alt="img">
+                                        <h5><x-translation key="set_up" /></h5>
+                                    </div>
+                                    <p><x-translation key="set_up_easy" /></p>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-6 col-md-6">
+                                <div class="service-details-box">
+                                    <div class="icon">
+                                        <img src="assets/img/icon/16.svg" alt="img">
+                                        <h5><x-translation key="design" /></h5>
+                                    </div>
+                                    <p>Tanlangan panellarning rang va naqshini interyeringizga moslang</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="main-sidebar">
+
+                        <div class="single-sidebar-widget">
+                            <div class="wid-title">
+                                <h3>Categories</h3>
+                            </div>
+                            <div class="news-widget-categories">
+                                <ul>
+                                    <li><a href="service-details.html">All</a> <span><i
+                                                class="fa-solid fa-arrow-right-long"></i></span></li>
+                                    <li><a href="service-details.html">MDF Panels </a> <span><i
+                                                class="fa-solid fa-arrow-right-long"></i></span></li>
+                                    <li><a href="service-details.html">Ceiling Panels</a> <span><i
+                                                class="fa-solid fa-arrow-right-long"></i></span></li>
+                                    <li class="active"><a href="service-details.html">Wall Panels</a><span><i
+                                                class="fa-solid fa-arrow-right-long"></i></span></li>
+                                    <li><a href="service-details.html">Window Frame</a> <span><i
+                                                class="fa-solid fa-arrow-right-long"></i></span></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="single-sidebar-widget">
+                            <div class="wid-title">
+                                <h3>Download</h3>
+                            </div>
+                            <div class="brochures-download-items">
+                                <div class="brochures-items">
+                                    <div class="icon">
+                                        <i class="far fa-file-pdf"></i>
+                                    </div>
+                                    <div class="content">
+                                        <h5>Our Catalogue</h5>
+                                        <p>Download</p>
+                                    </div>
+                                    <!-- Update the download link to point to your PDF file -->
+
+                                </div>
+                                <a href="path/to/your/catalogue.pdf" class="download-btn" download>
+                                    <i class="fa-solid fa-download"></i>
+                                </a>
+                            </div>
+                            <div class="brochures-download-items">
+                                <div class="brochures-items">
+                                    <div class="icon">
+                                        <i class="far fa-file-pdf"></i>
+                                    </div>
+                                    <div class="content">
+                                        <h5>Our Catalogue</h5>
+                                        <p>Download</p>
+                                    </div>
+                                    <!-- Update the download link to point to your PDF file -->
+
+                                </div>
+                                <a href="path/to/your/catalogue.pdf" class="download-btn" download>
+                                    <i class="fa-solid fa-download"></i>
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
+</section>
 @endsection

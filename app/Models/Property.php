@@ -11,7 +11,7 @@ class Property extends Model
     
     use Translatable;
 
-    protected $translatable = ['name'];
+    protected $translatable = ['name', 'description'];
 
     public function products()
     {
