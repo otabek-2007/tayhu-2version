@@ -1,10 +1,9 @@
 @extends('layouts.frontend')
 @section('content')
-<link rel="stylesheet" href="{{asset('assets/stylesheets/main.css')}}">
 <!-- Breadcrumb Section Start -->
-<div class="breadcrumb-wrapper bg-cover" style="background-image: url('assets/img/service/product-cover.JPG');">
+<div class="breadcrumb-wrapper bg-cover" style="background-image: url('/assets/img/new-images/tayhu-company-images/bg-4\ 1.png');">
     <div class="shape-image float-bob-y">
-        <!-- <img src="assets/img/vector.png" alt="img"> -->
+{{--        <img src="/assets/img/vector.png" alt="img">--}}
     </div>
     <div class="container">
         <div class="breadcrumb-wrapper-items">
@@ -14,22 +13,22 @@
                 </div>
                 <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".5s">
                     <li>
-                        <a href="index.html">
-                            Home
+                        <a href="/">
+                            <x-translation key="home_link"/>
                         </a>
                     </li>
                     <li>
                         <i class="fa-sharp fa-solid fa-slash-forward"></i>
                     </li>
                     <li>
-                        Product
+                        <x-translation key="product_link"/>
                     </li>
                 </ul>
             </div>
             <div class="breadcrumb-image">
-                <!-- <img src="assets/img/breadcrumb-image.png" alt="img" class="float-bob-x"> -->
+{{--                <img src="assets/img/breadcrumb-image.png" alt="img" class="float-bob-x">--}}
                 <div class="bar-shape">
-                    <!-- <img src="assets/img/breadcrumb-bar.png" alt="img"> -->
+{{--                    <img src="assets/img/breadcrumb-bar.png" alt="img">--}}
                 </div>
             </div>
         </div>
