@@ -167,9 +167,9 @@
 <section class="project-section fix section-padding">
     <div class="container">
         <div class="section-title text-center">
-            <h6 class="wow fadeInUp"><i class="fa-solid fa-arrow-left-long"></i>our complete projects<i
+            <h6 class="wow fadeInUp"><i class="fa-solid fa-arrow-left-long"></i><x-translation key="our_complete" /><i
                     class="fa-solid fa-arrow-right-long"></i></h6>
-            <h2 class="splt-txt wow" data-splitting>Our Latest Projects</h2>
+            <h2 class="splt-txt wow" data-splitting><x-translation key="latest_project" /></h2>
         </div>
     </div>
     <div class="project-wrapper style-2">
@@ -245,9 +245,8 @@
                 <div class="col-lg-6">
                     <div class="work-process-image">
                         <div class="section-title">
-                            <h6 class="wow fadeInUp"><i class="fa-solid fa-arrow-left-long"></i>Working
-                                Process<i class="fa-solid fa-arrow-right-long"></i></h6>
-                            <h2 class="splt-txt wow" data-splitting>Building The Future's Foundations</h2>
+                            <h6 class="wow fadeInUp"><i class="fa-solid fa-arrow-left-long"></i><x-translation key="working_process" /><i class="fa-solid fa-arrow-right-long"></i></h6>
+                            <h2 class="splt-txt wow" data-splitting><x-translation key="futured_foundation" /></h2>
                         </div>
                         <div class="track-image mt-4 mt-md-0">
                             <img src="assets/img/new-images/window-frame (2).png" alt="img">
@@ -270,30 +269,27 @@
                 <div class="col-lg-6">
                     <div class="achivements-content">
                         <div class="section-title">
-                            <h6 class="wow fadeInUp"><i class="fa-solid fa-arrow-left-long"></i>Company
-                                Status<i class="fa-solid fa-arrow-right-long"></i></h6>
-                            <h2 class="splt-txt wow" data-splitting>Our Services meets The Highest
-                                Standards.</h2>
+                            <h6 class="wow fadeInUp"><i class="fa-solid fa-arrow-left-long"></i><x-translation key="company_status" /><i class="fa-solid fa-arrow-right-long"></i></h6>
+                            <h2 class="splt-txt wow" data-splitting><x-translation key="our_service" /></h2>
                         </div>
                         <p class="mt-3 mt-md-0 wow fadeInUp" data-wow-delay=".3s">
-                            Our commitment to excellence ensures that every project we undertake meets the
-                            highest industry standards. We believe that quality service is not just a goal
-                            but a fundamental principle that drives our operations. </p>
+                            <x-translation key="our_commitment" />
+                        </p>
                         <div class="counter-items-area">
                             <div class="counter-content wow fadeInUp" data-wow-delay=".3s">
-                                <h2><span class="count">45</span>k+</h2>
-                                <span>project Complete</span>
+                                <h2><span class="count">{{ $companyStatus->project_complete_count }}</span>k+</h2>
+                                <span><x-translation key="project_complete_count" /></span>
                             </div>
                             <div class="counter-content wow fadeInUp" data-wow-delay=".5s">
-                                <h2><span class="count">25</span>k+</h2>
-                                <span>Active On Clients</span>
+                                <h2><span class="count">{{ $companyStatus->active_on_client}}</span>k+</h2>
+                                <span><x-translation key="active_on_client" /></span>
                             </div>
                             <div class="counter-content wow fadeInUp" data-wow-delay=".7s">
-                                <h2><span class="count">2.4</span>k+</h2>
-                                <span>Winning Awards</span>
+                                <h2><span class="count">{{ $companyStatus->winning_awards}}</span>k+</h2>
+                                <span><x-translation key="winning_awards" /></span>
                             </div>
                         </div>
-                        <a href="about.html" class="theme-btn wow fadeInUp" data-wow-delay=".3s">Learn More
+                        <a href="about.html" class="theme-btn wow fadeInUp" data-wow-delay=".3s"><x-translation key="learn_more" />
                             <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>

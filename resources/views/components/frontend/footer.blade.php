@@ -81,12 +81,7 @@
                                     Contact Us
                                 </a>
                             </li>
-                            <li>
-                                <a href="news.html">
-                                    <i class="fa-solid fa-angles-right"></i>
-                                    Blog & News
-                                </a>
-                            </li>
+                           
                             <li>
                                 <a href="faq.html">
                                     <i class="fa-solid fa-angles-right"></i>
@@ -106,19 +101,19 @@
                             <li>
                                 <a href="team.html">
                                     <i class="fa-solid fa-angles-right"></i>
-                                    Our Team
+                                    Showroom
                                 </a>
                             </li>
                             <li>
                                 <a href="project.html">
                                     <i class="fa-solid fa-angles-right"></i>
-                                    Our Projects
+                                    Our Gallery
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
                                     <i class="fa-solid fa-angles-right"></i>
-                                    Catalogue
+                                    Our Products
                                 </a>
                             </li>
 

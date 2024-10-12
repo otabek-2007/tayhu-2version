@@ -1,242 +1,166 @@
 @extends('layouts.frontend')
 @section('content')
-<div class="single-page">
-    <div class="container">
-        <nav aria-label="breadcrumb single-page">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Services</li>
-            </ol>
-        </nav>
-    </div>
-</div>
 
-<!-- Page Section Start -->
-<div class="tp-product-details-area tp-product-style-2 pt-120 pb-90">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-9 col-lg-8">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="tp-product-top pb-15">
-                            <div class="row align-items-center" style="display:flex; justify-content: space-between;">
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-30">
-                                    <div class="tp-product__text">
-                                        <span>Showing 1–10 of <i>{{ count($products) }}</i> results</span>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 mb-30 text-right">
-                                    <form id="filterForm" action="{{ route('service') }}" method="GET">
-                                        <div class="dropdown">
-                                            <button type="button" class="dropdown-button">Select Filter</button>
-                                            <input type="hidden" id="filterInput" name="filter" value="">
-                                            <div class="dropdown-content">
-                                                <div class="dropdown-item" data-value="recent">Recent</div>
-                                                <div class="dropdown-item" data-value="new_added">New added</div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tp-product-wrap">
-                    <div class="row">
-                        @forelse($products as $product)
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 mb-30">
-                            <div class="tp-product-item p-relative">
-                                <div class="tp-product-thumb-box p-relative mb-25">
-                                    <a href="{{ route('serviceSingle', $product->id) }}">
-                                        @if(count($product->images_array) > 0)
-                                        @foreach(array_slice($product->images_array, 0, 2) as $image)
-                                        <img class="image-{{ $loop->index + 1 }}" src="{{ asset('storage/' . $image) }}" alt="Product Image">
-                                        @endforeach
-                                        @else
-                                        <p>No images available.</p>
-                                        @endif
-                                    </a>
-                                </div>
-                                <div class="tp-product-content text-center">
-                                    <h4 class="tp-product-title">
-                                        <a href="{{ route('serviceSingle', $product->id) }}" class="text-anim">
-                                            {!! $product->getTranslatedAttribute('name', app()->getLocale()) !!}
-                                        </a>
-                                    </h4>
-                                </div>
-                            </div>
-                        </div>
-                        @empty
-                        <p>No products found.</p>
-                        @endforelse
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="basic-pagination mt-20">
-                                <nav>
-                                    <ul class="d-flex">
-                                        <li>
-                                            <a href="{{ route('catalog') }}">
-                                                <i class="fa-solid fa-angles-left"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div id="smooth-wrapper">
+    <div id="smooth-content">
+        <!-- Breadcrumb Section Start -->
+        <div class="breadcrumb-wrapper bg-cover"
+            style="background-image: url('assets/img/service/product-cover.JPG')">
+            <div class="shape-image float-bob-y">
+                <!-- <img src="assets/img/vector.png" alt="img"> -->
             </div>
-            <div class="col-xl-3 col-lg-4">
-                <div class="sidebar__wrapper sidebar__style-2">
-                    <div class="sidebar__widget mb-35">
-                        <h3 class="sidebar__widget-title mb-15">Search Here</h3>
-                        <div class="sidebar__widget-content py-3">
-                            <div class="sidebar__search">
-                                <form action="{{ route('service') }}" method="GET">
-                                    <div class="sidebar__search-input-2">
-                                        <input type="text" name="query" value="{{ request('query') }}" placeholder="Search here....">
-                                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                                    </div>
-                                </form>
-                            </div>
+            <div class="container">
+                <div class="breadcrumb-wrapper-items">
+                    <div class="page-heading">
+                        <div class="breadcrumb-sub-title">
+                            <h1 class="wow fadeInUp" data-wow-delay=".3s">Products</h1>
                         </div>
+                        <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".5s">
+                            <li>
+                                <a href="index.html">
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <i class="fa-sharp fa-solid fa-slash-forward"></i>
+                            </li>
+                            <li>
+                                Products
+                            </li>
+                        </ul>
                     </div>
-                    <div class="sidebar__widget mb-45">
-                        <h3 class="sidebar__widget-title mb-30">Categories</h3>
-                        <div class="sidebar__widget-content">
-                            <ul>
-                                @foreach($categories as $category)
-                                <li><a href="/service/{{$category->id}}">{{ $category->name }} ({{ $category->products_count }})</a></li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="sidebar__widget mb-40">
-                        <h3 class="sidebar__widget-title mb-20">Door Size</h3>
-                        <div class="sidebar__widget-content content-style-2">
-                            <ul>
-                                @foreach($sizes as $item)
-                                <li>
-                                    <a href="/service?size={{ $item->id }}">
-                                        <i class="fa-solid fa-chevron-left"></i>
-                                        {{ $item->size }}
-                                    </a>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="sidebar__widget">
-                            <h3 class="sidebar__widget-title mb-35"><x-translation key="property_link"/></h3>
-                            <div class="sidebar__widget-content">
-                             <div class="tagcloud">
-                                @foreach($properties as $item)
-                                    <a href="{{ url('/service') }}?property={{ $item->id }}" style="color: inherit;">
-                                        {!! $item->getTranslatedAttribute('name', app()->getLocale()) !!}
-                                    </a>
-                                @endforeach            
-                            </div>
+                    <div class="breadcrumb-image">
+                        <!-- <img src="assets/img/breadcrumb-image.png" alt="img" class="float-bob-x"> -->
+                        <div class="bar-shape">
+                            <!-- <img src="assets/img/breadcrumb-bar.png" alt="img"> -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Service Section Start -->
+        <section class="service-section fix section-padding">
+            <div class="container">
+                <div class="section-title text-center">
+                    <h6 class="wow fadeInUp"><i class="fa-solid fa-arrow-left-long"></i>OUR PRODUCTS<i
+                            class="fa-solid fa-arrow-right-long"></i></h6>
+                    <h2 class="splt-txt wow" data-splitting>Quality Frames and Panels <br> For Every Project</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="row">
+                            @forelse($products as $product)
+                            <div class="col-xl-6 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".2s">
+                                <div class="service-box-items items-bg">
+                                    <div class="service-thumb">
+                                        @php
+                                        $images=json_decode($product->images);
+                                        @endphp
+                                        @if($images)
+                                        <img src="{{ asset('storage/' . $images[0]) }}" alt="Product Image">
+                                        @else
+                                        <p>Image not uploaded</p>
+                                        @endif
+                                    </div>
+                                    <div class="service-content">
+                                        <h2 class="number">{{$loop->index < 10 ? "0" . $loop->index + 1 : $loop->index + 1}} </h2>
+
+                                        <h4 class="tp-product-title">
+                                            <a href="{{ route('serviceSingle', $product->id) }}" class="text-anim">
+                                                {!! $product->getTranslatedAttribute('name', app()->getLocale()) !!}
+                                            </a>
+                                        </h4>
+                                        <a href="{{ route('serviceSingle', $product->id) }}" class="link-btn">See Product <i
+                                                class="fa-solid fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            @empty
+                            <p>No products found.</p>
+                            @endforelse
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="main-sidebar">
+                            <div class="single-sidebar-widget">
+                                <div class="search-widget">
+                                    <form action="#">
+                                        <input name="query" type="text" placeholder="Search">
+                                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="single-sidebar-widget">
+                                <div class="wid-title">
+                                    <h3><x-translation key="category" /></h3>
+                                </div>
+                                <div class="news-widget-categories">
+                                    <ul>
+                                        @foreach($categories as $item)
+                                        <li><a href="/service/{{$item->id}}">{{$item->name}}</a> <span><i
+                                                    class="fa-solid fa-arrow-right-long"></i></span></li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="single-sidebar-widget">
+                                <div class="wid-title">
+                                    <h3><x-translation key="download_link" /></h3>
+                                </div>
+                                @foreach($pdfs as $pdf)
+                                <div class="brochures-download-items">
+                                    <div class="brochures-items">
+                                        <div class="icon">
+                                            <i class="far fa-file-pdf"></i>
+                                        </div>
+                                        <div class="content">
+                                            <h5>{{ $pdf->getTranslatedAttribute('title', app()->getLocale()) }}</h5>
+                                            <p><x-translation key="download_link" /></p>
+                                        </div>
+                                    </div>
+                                    <!-- Download button -->
+                                    <a href="{{ asset('storage/' . $pdf->pdf) }}" class="download-btn" download>
+                                        <i class="fa-solid fa-download"></i>
+                                    </a>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- {{$products->links()}} -->
+                <div class="page-nav-wrap pt-5 text-center wow fadeInUp" data-wow-delay=".3s">
+                    <ul>
+                        @if ($products->onFirstPage())
+                        <li class="disabled"><span class="page-numbers icon"><i class="fa-solid fa-arrow-left"></i></span></li>
+                        @else
+                        <li><a class="page-numbers icon" href="{{ $products->previousPageUrl() }}"><i class="fa-solid fa-arrow-left"></i></a></li>
+                        @endif
+
+                        @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
+                        @if ($page == $products->currentPage())
+                        <li><span class="page-numbers active">{{ $page }}</span></li>
+                        @else
+                        <li><a class="page-numbers" href="{{ $url }}">{{ $page }}</a></li>
+                        @endif
+                        @endforeach
+
+                        @if ($products->hasMorePages())
+                        <li><a class="page-numbers icon" href="{{ $products->nextPageUrl() }}"><i class="fa-solid fa-arrow-right"></i></a></li>
+                        @else
+                        <li class="disabled"><span class="page-numbers icon"><i class="fa-solid fa-arrow-right"></i></span></li>
+                        @endif
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+
+
+
     </div>
 </div>
 
-<!-- Element Selection Script -->
-<link rel="stylesheet" href="{{asset('assets/stylesheets/main.css')}}">
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const dropdownButton = document.querySelector('.dropdown-button');
-        const dropdownContent = document.querySelector('.dropdown-content');
-        const dropdownItems = document.querySelectorAll('.dropdown-item');
-        const filterInput = document.getElementById('filterInput');
-        const filterForm = document.getElementById('filterForm');
-
-        // Show or hide the dropdown when the button is clicked
-        dropdownButton.addEventListener('click', function() {
-            dropdownContent.classList.toggle('show');
-        });
-
-        // Select an option and update the hidden input
-        dropdownItems.forEach(item => {
-            item.addEventListener('click', function() {
-                // Remove 'active' class from all items
-                dropdownItems.forEach(i => i.classList.remove('active'));
-
-                // Add 'active' class to the selected item
-                this.classList.add('active');
-
-                // Update the button text
-                dropdownButton.textContent = this.textContent;
-
-                // Get the selected value and set it in the hidden input
-                const selectedValue = this.getAttribute('data-value');
-                filterInput.value = selectedValue;
-
-                // Submit the form
-                filterForm.submit();
-
-                // Close the dropdown
-                dropdownContent.classList.remove('show');
-            });
-        });
-
-        // Close the dropdown when clicking outside
-        window.addEventListener('click', function(e) {
-            if (!dropdownButton.contains(e.target) && !dropdownContent.contains(e.target)) {
-                dropdownContent.classList.remove('show');
-            }
-        });
-    });
-</script>
-
-<style>
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
-
-    .dropdown-button {
-        background-color: #f0f0f0;
-        color: #333;
-        padding: 10px 20px;
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
-    }
-
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #ffffff;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-    }
-
-    .dropdown-content .dropdown-item {
-        color: #333;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        cursor: pointer;
-    }
-
-    .dropdown-content .dropdown-item:hover {
-        background-color: #ddd;
-    }
-
-    .dropdown-content .active {
-        background-color: #007BFF;
-        color: #ffffff;
-    }
-
-    .show {
-        display: block;
-    }
-</style>
 @endsection

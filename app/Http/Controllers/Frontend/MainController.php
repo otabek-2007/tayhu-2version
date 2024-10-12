@@ -13,7 +13,9 @@ use App\Models\Product;
 use App\Models\Property;
 use App\Models\ProductCategory;
 use App\Models\AboutOurClient;
+use App\Models\CompanyStatus;
 use App\Models\FutureFoundation;
+use App\Models\ProductPdf;
 use App\Models\Showroom;
 use App\Models\Size;
 use App\Models\Team;
@@ -49,10 +51,11 @@ class MainController extends Controller
 
         $banners = AboutBanner::all();
         $intoFuture = IntoFuture::first();
+        $companyStatus = CompanyStatus::first();
         $ourProducts = Product::all();
         $futureFoundation = FutureFoundation::first();
         // Return the view with the data
-        return view('frontend.index', compact('banners', 'futureFoundation', 'ourProducts', 'projects', 'clients', 'teams', 'testimonials', 'blogs', 'intoFuture', 'partners', 'construction', 'building', 'architect', 'electrical'));
+        return view('frontend.index', compact('banners', 'companyStatus', 'futureFoundation', 'ourProducts', 'projects', 'clients', 'teams', 'testimonials', 'blogs', 'intoFuture', 'partners', 'construction', 'building', 'architect', 'electrical'));
     }
     public function storeTestimonial(Request $request)
     {
@@ -179,10 +182,11 @@ class MainController extends Controller
 
         // Fetch all sizes
         $sizes = Size::all();
+        $pdfs = ProductPdf::all();
         $properties = Property::all();
 
         // Return the view with products, categories, and sizes
-        return view('frontend.service', compact('products', 'categories', 'sizes', 'properties'));
+        return view('frontend.service', compact('products', 'pdfs', 'categories', 'sizes', 'properties'));
     }
 
 
