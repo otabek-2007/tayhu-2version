@@ -97,8 +97,8 @@
                 <div class="offcanvas__content">
                     <div class="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
                         <div class="offcanvas__logo">
-                            <a href="index.html">
-                                <img src="assets/img/tayhu-logo-white-2.png" alt="logo-img">
+                            <a href="/">
+                                <img src="/assets/img/tayhu-logo-white-2.png" alt="logo-img">
                             </a>
                         </div>
                         <div class="offcanvas__close">
@@ -151,7 +151,7 @@
                             </li>
                         </ul>
                         <div class="header-button mt-4">
-                            <a href="contact.html" class="theme-btn text-center">
+                            <a href="/contact" class="theme-btn text-center">
                                 <span>Get A Quote<i class="fa-solid fa-arrow-right-long"></i></span>
                             </a>
                         </div>
@@ -176,11 +176,11 @@
                     <div class="header-left">
                         <div class="logo">
                             <a href="/" class="header-logo">
-                                <img src="assets/img/tayhu-logo-white-2.png" alt="logo-img"
+                                <img src="/assets/img/tayhu-logo-white-2.png" alt="logo-img"
                                     style="width:200px; height:70px;">
                             </a>
                             <a href="/" class="header-logo-2">
-                                <img src="assets/img/Tayhu logo (2).svg" alt="logo-img">
+                                <img src="a/ssets/img/Tayhu logo (2).svg" alt="logo-img">
                             </a>
                         </div>
                     </div>
@@ -258,7 +258,7 @@
                         </div>
                         <a href="#0" class="search-trigger search-icon"><i class="fas fa-search"></i></a>
                         <div class="header-button">
-                            <a href="contact.html" class="theme-btn">GAT A QUOTE <i
+                            <a href="/contact" class="theme-btn">GAT A QUOTE <i
                                     class="fa-solid fa-arrow-right"></i></a>
                         </div>
                         <div class="header__hamburger d-xl-block my-auto">
