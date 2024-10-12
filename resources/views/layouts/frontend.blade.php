@@ -180,7 +180,7 @@
                                     style="width:200px; height:70px;">
                             </a>
                             <a href="/" class="header-logo-2">
-                                <img src="a/ssets/img/Tayhu logo (2).svg" alt="logo-img">
+                                <img src="/ssets/img/Tayhu logo (2).svg" alt="logo-img">
                             </a>
                         </div>
                     </div>
