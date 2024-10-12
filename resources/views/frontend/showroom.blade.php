@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 @section('content')
-    <div class="breadcrumb-wrapper bg-cover" style="background-image: url('assets/img/new-images/tayhu-company-images/bg-4\ 1.png');">
+    <div class="breadcrumb-wrapper bg-cover" style="background-image: url('/assets/img/new-images/tayhu-company-images/bg-4\ 1.png');">
         <div class="shape-image float-bob-y">
             <img src="/assets/img/vector.png" alt="img">
         </div>
@@ -34,9 +34,7 @@
         </div>
     </div>
 
-
-
-    <!-- <div id="page" class="section-padding"> -->
+    <!-- Main showroom section -->
     <section class="project-section section-padding fix">
         <div class="container">
             <div class="section-title text-center">
@@ -45,34 +43,25 @@
             </div>
             <div class="row">
                 <div class="col-lg-9">
-                    <div class="showrooom-container shadow-lg bg-body-tertiary rounded"
-                         style="background-image: url('./assets/img/showroom-images/Decor Plast 1.png');">
-                        <img src="./assets/img/showroom-images/Orqa fon-2.png" alt="" class="w-100">
+                    <div class="showroom-container shadow-lg bg-body-tertiary rounded"
+                         style="background-image: url('{{ asset('storage/' . str_replace('\\', '/', $showroom[0]->images_array[0])) }}');">
+                        <img src="./assets/img/showroom-images/Orqa fon-2.png" alt="Showroom Background" class="w-100 h-100">
                     </div>
                 </div>
+
                 <div class="col-lg-3 showroom-cards-responsive">
-                    <div class="col-lg-12">
-                        <button class="fon-1 fon-button fon-button-active">
-                            <img src="./assets/img/showroom-images/Decor Plast 1-full.png" class="w-100 h-100">
-                        </button>
-                    </div>
-                    <div class="col-lg-12">
-                        <button class="fon-2 fon-button">
-                            <img src="./assets/img/showroom-images/Decor Plast 2-full.png" alt="" class="w-100 h-100">
-                        </button>
-                    </div>
-                    <div class="col-lg-12">
-                        <button class="fon-3 fon-button">
-                            <img src="./assets/img/showroom-images/Decor Plast 3-full.png" alt="" class="w-100 h-100">
-                        </button>
-                    </div>
-                    <div class="col-lg-12">
-                        <button class="fon-4 fon-button">
-                            <img src="./assets/img/showroom-images/Decor Plast 4-full.png" alt="" class="w-100 h-100">
-                        </button>
-                    </div>
+                    @foreach($showroom as $item)
+                        @foreach($item->images_array as $index => $image)
+                            <div class="col-lg-12 mb-2">
+                                <button class="fon-1 fon-button {{ $index === 0 ? 'fon-button-active' : '' }}" data-index="{{ $index }}">
+                                    <img src="{{ asset('storage/' . str_replace('\\', '/', $image)) }}" alt="Showroom Image" class="w-100 h-100">
+                                </button>
+                            </div>
+                        @endforeach
+                    @endforeach
                 </div>
             </div>
+
             <div class="section-title text-center mt-5">
                 <h6 class="wow fadeInUp"><i class="fa-solid fa-arrow-left-long"></i>Make Your Selection<i class="fa-solid fa-arrow-right-long"></i></h6>
                 <h2 class="splt-txt wow" data-splitting>Create Your Dream Ceiling</h2>
@@ -108,8 +97,8 @@
             </div>
 
 
-        </div>
 
+        </div>
     </section>
 
 
@@ -131,59 +120,35 @@
         }
     </script>
 
+
+
     <script>
-    const showroomContainer = document.querySelector('.showrooom-container');
+        const showroomContainer = document.querySelector('.showrooom-container');
 
-    const buttons = document.querySelectorAll('.fon-button');
+        const buttons = document.querySelectorAll('.fon-button');
 
-    const backgroundImages = [
-        './assets/img/showroom-images/Decor Plast 1.png',
-        './assets/img/showroom-images/Decor Plast 2.png',
-        './assets/img/showroom-images/Decor Plast 3.png',
-        './assets/img/showroom-images/Decor Plast 4.png'
-    ];
+        const backgroundImages = [
+            @foreach($showroom as $item)
+                @foreach($item->images_array as $image)
+                '{{ asset('storage/' . str_replace('\\', '/', $image)) }}',
+            @endforeach
+            @endforeach
+        ];
 
-    const updateBackground = (index) => {
-        showroomContainer.style.backgroundImage = `url('${backgroundImages[index]}')`;
+        const updateBackground = (index) => {
+            showroomContainer.style.backgroundImage = url('${backgroundImages[index]}');
 
-        buttons.forEach(button => button.classList.remove('fon-button-active'));
+            buttons.forEach(button => button.classList.remove('fon-button-active'));
 
-        buttons[index].classList.add('fon-button-active');
-    };
+            buttons[index].classList.add('fon-button-active');
+        };
 
-    buttons.forEach((button, index) => {
-        button.addEventListener('click', () => {
-            updateBackground(index);
+        buttons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                updateBackground(index);
+            });
         });
-    });
 
-    updateBackground(0);
-</script>
-
-<style>
-    @media(max-width: 575px) {
-        .showroom-cards-responsive {
-            display: flex;
-            margin-top: 15px;
-            padding: 0;
-        }
-    }
-
-    .fon-button {
-        border: 1px solid #bdbdbd;
-        padding: 5px;
-        height: 65px;
-        width: 65px;
-        transition: border 0.3s linear;
-        margin-bottom: 15px;
-    }
-
-    .fon-button img {
-        object-fit: cover;
-    }
-
-    .fon-button-active {
-        border: 2px solid #FFA500;
-    }
-</style>
+        updateBackground(0);
+    </script>
 @endsection
