@@ -82,10 +82,10 @@ class MainController extends Controller
     }
     public function about()
     {
-        $partners = Partner::all();
+        $teams = Team::all();
         $about = IntoFuture::first();
         $company_advantages = CompanyAdvantage::all();
-        return view('frontend.about', compact('about', 'company_advantages', 'partners'));
+        return view('frontend.about', compact('about', 'company_advantages', 'teams'));
     }
 
     public function blog()

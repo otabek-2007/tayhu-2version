@@ -204,78 +204,25 @@ $lang = app()->getLocale();
                 <h2 class="splt-txt wow" data-splitting>Our Professional Team</h2>
             </div>
             <div class="row">
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 wow fadeInUp">
-                    <div class="team-box-items">
-                        <div class="social-icon d-grid align-items-center">
-                            <a href="#"><i class="fab fa-telegram"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        </div>
-                        <div class="team-image">
-                            <img src="assets/img/new-images/user-img.jpg" alt="img">
-                        </div>
-                        <div class="team-content">
-                            <h5><a href="team-details.html">Shikhon Islam</a></h5>
-                            <p>Sr. engineer</p>
-                            <a href="team-details" class="icon"><i class="fa-solid fa-link"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".2s">
-                    <div class="team-box-items active">
-                        <div class="social-icon d-grid align-items-center">
-                            <a href="#"><i class="fab fa-telegram"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        </div>
-                        <div class="team-image">
-                            <img src="assets/img/new-images/user-img.jpg" alt="img">
-                        </div>
-                        <div class="team-content">
-                            <h5><a href="team-details.html">Jenny Wilson</a></h5>
-                            <p>Sr. engineer</p>
-                            <a href="team-details" class="icon"><i class="fa-solid fa-link"></i></a>
+                @foreach($teams as $team)
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 wow fadeInUp">
+                        <div class="team-box-items">
+                            <div class="social-icon d-grid align-items-center">
+                                <a href="{{ $team->telegram }}"><i class="fab fa-telegram"></i></a>
+                                <a href="{{ $team->instagram }}"><i class="fab fa-instagram"></i></a>
+                                <a href="{{ $team->facebook }}"><i class="fab fa-facebook-f"></i></a>
+                            </div>
+                            <div class="team-image">
+                                <img src="{{ asset('storage/' . $team->image_url) }}" alt="img">
+                            </div>
+                            <div class="team-content">
+                                <h5><a href="{{ route('team.detail', $team->id) }}">{{ $team->getTranslatedAttribute('name', $lang)}}</a></h5>
+                                <p>{{ $team->getTranslatedAttribute('position', $lang) }}</p>
+                                <a href="{{ route('team.detail', $team->id) }}" class="icon"><i class="fa-solid fa-link"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".4s">
-                    <div class="team-box-items">
-                        <div class="social-icon d-grid align-items-center">
-                            <a href="#"><i class="fab fa-telegram"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        </div>
-                        <div class="team-image">
-                            <img src="assets/img/new-images/user-img.jpg" alt="img">
-                        </div>
-                        <div class="team-content">
-                            <h5><a href="team-details.html">Kawser Ahmed</a></h5>
-                            <p>Sr. engineer</p>
-                            <a href="team-details" class="icon"><i class="fa-solid fa-link"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".6s">
-                    <div class="team-box-items">
-                        <div class="social-icon d-grid align-items-center">
-                            <a href="#"><i class="fab fa-telegram"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        </div>
-                        <div class="team-image">
-                            <img src="assets/img/new-images/user-img.jpg" alt="img">
-                        </div>
-                        <div class="team-content">
-                            <h5><a href="team-details.html">Ronald Richards</a></h5>
-                            <p>Sr. engineer</p>
-                            <a href="team-details" class="icon"><i class="fa-solid fa-link"></i></a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
