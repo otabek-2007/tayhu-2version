@@ -218,7 +218,7 @@
                         </div>
                         <div class="work-process-box style-2 wow fadeInUp" data-wow-delay=".5s">
                             <div class="shape-img">
-                                <img src="assets/img/new-images/icon-brown.svg" alt="img">
+                                <img src="/assets/img/new-images/icon-brown.svg" alt="img">
                             </div>
                             <div class="number">
                                 02 .
@@ -230,7 +230,7 @@
                         </div>
                         <div class="work-process-box style-3 wow fadeInUp" data-wow-delay=".3s">
                             <div class="shape-img">
-                                <img src="assets/img/new-images/icon-brown.svg" alt="img">
+                                <img src="/assets/img/new-images/icon-brown.svg" alt="img">
                             </div>
                             <div class="number">
                                 03 .
@@ -249,7 +249,7 @@
                             <h2 class="splt-txt wow" data-splitting><x-translation key="futured_foundation" /></h2>
                         </div>
                         <div class="track-image mt-4 mt-md-0">
-                            <img src="assets/img/new-images/window-frame (2).png" alt="img">
+                            <img src="/assets/img/new-images/window-frame (2).png" alt="img">
                         </div>
                     </div>
                 </div>
@@ -261,7 +261,7 @@
 <!-- Achivements Section Start -->
 <section class="achivements-section fix section-padding">
     <div class="shape-3">
-        <img src="assets/img/skills/shape-3.png" alt="img">
+        <img src="/assets/img/skills/shape-3.png" alt="img">
     </div>
     <div class="container">
         <div class="achivements-wrapper style-3">
@@ -289,15 +289,15 @@
                                 <span><x-translation key="winning_awards" /></span>
                             </div>
                         </div>
-                        <a href="about.html" class="theme-btn wow fadeInUp" data-wow-delay=".3s"><x-translation key="learn_more" />
+                        <a href="/about" class="theme-btn wow fadeInUp" data-wow-delay=".3s"><x-translation key="learn_more" />
                             <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="col-xxl-4 col-xl-5 col-lg-6 wow fadeInUp" data-wow-delay=".2s">
                     <div class="achivements-image">
-                        <img src="assets/img/new-images/status-2.jpg" alt="img" style="height: 500px;">
+                        <img src="/assets/img/new-images/status-2.jpg" alt="img" style="height: 500px;">
                         <div class="achivements-image-2 float-bob-y">
-                            <img src="assets/img/new-images/status-1.jpg" alt="img"
+                            <img src="/assets/img/new-images/status-1.jpg" alt="img"
                                 style="width: 300px; height: 500px;">
                         </div>
                     </div>

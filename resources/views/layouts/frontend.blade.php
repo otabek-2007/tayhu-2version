@@ -233,9 +233,6 @@
                                                 @foreach($categories as $category)
                                                     <li><a href="/service/{{ $category->id }}">{{ $category->name }}</a></li>
                                                 @endforeach
-                                                <li><a href="/service?category=(name)">Ceiling Panels</a></li>
-                                                <li><a href="/service?category=(name)">Wall Panels</a></li>
-                                                <li><a href="/service?category=(name)">Window Frame</a></li>
 
                                             </ul>
                                         </li>

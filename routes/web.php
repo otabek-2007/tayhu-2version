@@ -19,6 +19,7 @@ use App\Http\Controllers\LanguageController;
 //Frontend Route start
 Route::get('/', [MainController::class, 'index'])->name('home');
 Route::get('/about', [MainController::class, 'about'])->name('about');
+Route::get('/faq', [MainController::class, 'faq'])->name('faq');
 Route::get('/team', [MainController::class, 'team'])->name('team');
 Route::get('/catalog', [MainController::class, 'catalog'])->name('catalog');
 Route::get('/contact', [MainController::class, 'contact'])->name('contact');

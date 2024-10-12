@@ -83,7 +83,7 @@ class MainController extends Controller
     public function about()
     {
         $partners = Partner::all();
-        $about = IntoFuture::all();
+        $about = IntoFuture::first();
         $company_advantages = CompanyAdvantage::all();
         return view('frontend.about', compact('about', 'company_advantages', 'partners'));
     }

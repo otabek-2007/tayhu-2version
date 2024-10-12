@@ -1,9 +1,13 @@
+<?php
+$lang = app()->getLocale();
+?>
+
 <footer class="footer-section style-radius bg-cover bg-cover"
     style="background-image: url('assets/img/footer/bg.jpg'); bottom:0px;">
     <div class="container">
         <div class="contact-info-area">
-            <a href="index.html" class="wow fadeInUp" data-wow-delay=".2s">
-                <img src="assets/img/tayhu-logo-white-2.png" alt="img" style="width:200px; height:70px;">
+            <a href="/" class="wow fadeInUp" data-wow-delay=".2s">
+                <img src="{{ asset('storage/' . str_replace('\\', '/', $site->logo)) }}" alt="img" style="width:200px; height:70px;">
             </a>
             <div class="contact-info-items wow fadeInUp" data-wow-delay=".4s">
                 <div class="icon">
@@ -12,7 +16,7 @@
                 <div class="content">
                     <p>Office location</p>
                     <h3>
-                        Karvan Yuli Street, Tashkent
+                        {{ $site->getTranslatedAttribute('location_1', $lang) }}
                     </h3>
                 </div>
             </div>
@@ -24,8 +28,8 @@
                     <p>send email</p>
                     <h3>
                         <a href="mailto:
-                                        spektrstar@tayhu.uz">
-                            spektrstar@tayhu.uz</a>
+                                        {{ $site->email_1 }}">
+                            {{ $site->email_1 }}</a>
                     </h3>
                 </div>
             </div>
@@ -36,7 +40,7 @@
                 <div class="content">
                     <p>call emergency</p>
                     <h3>
-                        <a href="tel:+998 71 223 65 08">+998 71 223 65 08</a>
+                        <a href="tel:{{ $site->phone_1 }}">{{ $site->phone_1 }}</a>
                     </h3>
                 </div>
             </div>
@@ -70,20 +74,20 @@
                         </div>
                         <ul class="list-area">
                             <li>
-                                <a href="about.html">
+                                <a href="/about">
                                     <i class="fa-solid fa-angles-right"></i>
                                     About Us
                                 </a>
                             </li>
                             <li>
-                                <a href="contact.html">
+                                <a href="/contact">
                                     <i class="fa-solid fa-angles-right"></i>
                                     Contact Us
                                 </a>
                             </li>
-                           
+
                             <li>
-                                <a href="faq.html">
+                                <a href="/faq">
                                     <i class="fa-solid fa-angles-right"></i>
                                     FAQ’S
                                 </a>
@@ -99,19 +103,19 @@
                         </div>
                         <ul class="list-area">
                             <li>
-                                <a href="team.html">
+                                <a href="/showroom">
                                     <i class="fa-solid fa-angles-right"></i>
                                     Showroom
                                 </a>
                             </li>
                             <li>
-                                <a href="project.html">
+                                <a href="/projects">
                                     <i class="fa-solid fa-angles-right"></i>
                                     Our Gallery
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="/catalog">
                                     <i class="fa-solid fa-angles-right"></i>
                                     Our Products
                                 </a>
@@ -129,24 +133,24 @@
                             <div class="gallery-wrap">
                                 <div class="gallery-item">
                                     <div class="thumb">
-                                        <a href="assets/img/footer/gallery-1.jpg" class="img-popup">
-                                            <img src="assets/img/footer/gallery-1.jpg" alt="gallery-img">
+                                        <a href="/assets/img/footer/gallery-1.jpg" class="img-popup">
+                                            <img src="/assets/img/footer/gallery-1.jpg" alt="gallery-img">
                                             <div class="icon">
                                                 <i class="far fa-plus"></i>
                                             </div>
                                         </a>
                                     </div>
                                     <div class="thumb">
-                                        <a href="assets/img/footer/gallery-2.jpg" class="img-popup">
-                                            <img src="assets/img/footer/gallery-2.jpg" alt="gallery-img">
+                                        <a href="/assets/img/footer/gallery-2.jpg" class="img-popup">
+                                            <img src="/assets/img/footer/gallery-2.jpg" alt="gallery-img">
                                             <div class="icon">
                                                 <i class="far fa-plus"></i>
                                             </div>
                                         </a>
                                     </div>
                                     <div class="thumb">
-                                        <a href="assets/img/footer/gallery-3.jpg" class="img-popup">
-                                            <img src="assets/img/footer/gallery-3.jpg" alt="gallery-img">
+                                        <a href="/assets/img/footer/gallery-3.jpg" class="img-popup">
+                                            <img src="/assets/img/footer/gallery-3.jpg" alt="gallery-img">
                                             <div class="icon">
                                                 <i class="far fa-plus"></i>
                                             </div>
@@ -155,24 +159,24 @@
                                 </div>
                                 <div class="gallery-item">
                                     <div class="thumb">
-                                        <a href="assets/img/footer/gallery-4.jpg" class="img-popup">
-                                            <img src="assets/img/footer/gallery-4.jpg" alt="gallery-img">
+                                        <a href="/assets/img/footer/gallery-4.jpg" class="img-popup">
+                                            <img src="/assets/img/footer/gallery-4.jpg" alt="gallery-img">
                                             <div class="icon">
                                                 <i class="far fa-plus"></i>
                                             </div>
                                         </a>
                                     </div>
                                     <div class="thumb">
-                                        <a href="assets/img/footer/gallery-5.jpg" class="img-popup">
-                                            <img src="assets/img/footer/gallery-5.jpg" alt="gallery-img">
+                                        <a href="/assets/img/footer/gallery-5.jpg" class="img-popup">
+                                            <img src="/assets/img/footer/gallery-5.jpg" alt="gallery-img">
                                             <div class="icon">
                                                 <i class="far fa-plus"></i>
                                             </div>
                                         </a>
                                     </div>
                                     <div class="thumb">
-                                        <a href="assets/img/footer/gallery-6.jpg" class="img-popup">
-                                            <img src="assets/img/footer/gallery-6.jpg" alt="gallery-img">
+                                        <a href="/assets/img/footer/gallery-6.jpg" class="img-popup">
+                                            <img src="/assets/img/footer/gallery-6.jpg" alt="gallery-img">
                                             <div class="icon">
                                                 <i class="far fa-plus"></i>
                                             </div>
