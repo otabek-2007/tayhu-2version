@@ -5,7 +5,7 @@ $lang = app()->getLocale();
 @extends('layouts.frontend')
 @section('content')
     <!-- Breadcrumb Section Start -->
-    <div class="breadcrumb-wrapper bg-cover" style="background-image: url('assets/img/new-images/tayhu-company-images/bg-4\ 1.png');">
+    <div class="breadcrumb-wrapper bg-cover" style="background-image: url('/assets/img/new-images/tayhu-company-images/bg-4\ 1.png');">
         <div class="shape-image float-bob-y">
             <img src="/assets/img/vector.png" alt="img">
         </div>
@@ -30,7 +30,6 @@ $lang = app()->getLocale();
                     </ul>
                 </div>
                 <div class="breadcrumb-image">
-                    <img src="/assets/img/breadcrumb-image.png" alt="img" class="float-bob-x">
                     <div class="bar-shape">
                         <img src="/assets/img/breadcrumb-bar.png" alt="img">
                     </div>
