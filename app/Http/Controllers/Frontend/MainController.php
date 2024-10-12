@@ -13,6 +13,7 @@ use App\Models\Product;
 use App\Models\Property;
 use App\Models\ProductCategory;
 use App\Models\AboutOurClient;
+use App\Models\FutureFoundation;
 use App\Models\Showroom;
 use App\Models\Size;
 use App\Models\Team;
@@ -48,10 +49,10 @@ class MainController extends Controller
 
         $banners = AboutBanner::all();
         $intoFuture = IntoFuture::first();
-
+        $ourProducts = Product::all();
+        $futureFoundation = FutureFoundation::first();
         // Return the view with the data
-        return view('frontend.index', compact('banners', 'projects','clients' , 'teams', 'testimonials', 'blogs', 'intoFuture', 'partners', 'construction', 'building', 'architect', 'electrical'));
-
+        return view('frontend.index', compact('banners', 'futureFoundation', 'ourProducts', 'projects', 'clients', 'teams', 'testimonials', 'blogs', 'intoFuture', 'partners', 'construction', 'building', 'architect', 'electrical'));
     }
     public function storeTestimonial(Request $request)
     {
@@ -60,7 +61,7 @@ class MainController extends Controller
             'star_rating' => 'required|min:1|max:5',
             'message' => 'required|string',
             'name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255', 
+            'last_name' => 'required|string|max:255',
         ]);
 
         // Create a new testimonial instance
@@ -111,7 +112,7 @@ class MainController extends Controller
             ->take($halfCount)
             ->withTranslations()
             ->get();
-        
+
         $category_second = ProductCategory::orderBy('id', 'asc')
             ->withCount('products') // Count of products in each category
             ->take($totalFaqs - $halfCount)
@@ -130,7 +131,7 @@ class MainController extends Controller
         $teams = Team::all();
         return view('frontend.team', compact('teams'));
     }
-   public function service(Request $request, $id = null)
+    public function service(Request $request, $id = null)
     {
         // Initialize the query builder for products
         $query = Product::query();

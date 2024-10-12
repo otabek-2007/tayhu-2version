@@ -11,5 +11,5 @@ use TCG\Voyager\Traits\Translatable;
 class IntoFuture extends Model
 {
     use HasFactory, Translatable;
-    protected $translatable = ['title', 'content'];
+    protected $translatable = ['title', 'content', 'owner_job'];
 }
