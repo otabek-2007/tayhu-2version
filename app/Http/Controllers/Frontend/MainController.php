@@ -132,7 +132,8 @@ class MainController extends Controller
     public function teamSingle($id)
     {
         $team = Team::find($id);
-        return view('frontend.team-single', compact('team'));
+        $partners = Partner::all();
+        return view('frontend.team-single', compact('team', 'partners'));
     }
     public function service(Request $request, $id = null)
     {
