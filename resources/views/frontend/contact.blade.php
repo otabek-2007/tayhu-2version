@@ -13,7 +13,7 @@
                     </div>
                     <ul class="breadcrumb-items wow fadeInUp" data-wow-delay=".5s">
                         <li>
-                            <a href="index.html">
+                            <a href="/">
                                 Home
                             </a>
                         </li>
