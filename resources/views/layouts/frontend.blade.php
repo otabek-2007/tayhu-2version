@@ -231,7 +231,7 @@
                                             ?>
                                             <ul class="submenu">
                                                 @foreach($categories as $category)
-                                                    <li><a href="/service/{{ $category->id }}">{{ $category->name }}</a></li>
+                                                    <li><a href="/service/{{ $category->id }}">{{ $category->getTranslatedAttribute('name' , app()->getLocale()) }}</a></li>
                                                 @endforeach
 
                                             </ul>

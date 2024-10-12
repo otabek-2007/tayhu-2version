@@ -129,10 +129,10 @@ class MainController extends Controller
     {
         return view('frontend.contact');
     }
-    public function team()
+    public function teamSingle($id)
     {
-        $teams = Team::all();
-        return view('frontend.team', compact('teams'));
+        $team = Team::find($id);
+        return view('frontend.team-single', compact('team'));
     }
     public function service(Request $request, $id = null)
     {

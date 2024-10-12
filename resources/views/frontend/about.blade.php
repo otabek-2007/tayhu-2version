@@ -216,9 +216,9 @@ $lang = app()->getLocale();
                                 <img src="{{ asset('storage/' . $team->image_url) }}" alt="img">
                             </div>
                             <div class="team-content">
-                                <h5><a href="{{ route('team.detail', $team->id) }}">{{ $team->getTranslatedAttribute('name', $lang)}}</a></h5>
+                                <h5><a href="{{ route('team.single', $team->id) }}">{{ $team->getTranslatedAttribute('name', $lang)}}</a></h5>
                                 <p>{{ $team->getTranslatedAttribute('position', $lang) }}</p>
-                                <a href="{{ route('team.detail', $team->id) }}" class="icon"><i class="fa-solid fa-link"></i></a>
+                                <a href="{{ route('team.single', $team->id) }}" class="icon"><i class="fa-solid fa-link"></i></a>
                             </div>
                         </div>
                     </div>
