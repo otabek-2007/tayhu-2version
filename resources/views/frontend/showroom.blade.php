@@ -25,7 +25,6 @@
                     </ul>
                 </div>
                 <div class="breadcrumb-image">
-                    <img src="/assets/img/breadcrumb-image.png" alt="img" class="float-bob-x">
                     <div class="bar-shape">
                         <img src="/assets/img/breadcrumb-bar.png" alt="img">
                     </div>
