@@ -13,8 +13,10 @@ use App\Models\Product;
 use App\Models\Property;
 use App\Models\ProductCategory;
 use App\Models\AboutOurClient;
+use App\Models\Certificate;
 use App\Models\CompanyStatus;
 use App\Models\FutureFoundation;
+use App\Models\IndustrialPower;
 use App\Models\ProductPdf;
 use App\Models\Showroom;
 use App\Models\Size;
@@ -27,27 +29,12 @@ class MainController extends Controller
 {
     public function index()
     {
-        $projects = OurProject::with('category')->get();
+        // $projects = OurProject::with('category')->get();
         $teams = Team::all();
         $clients = AboutOurClient::first();
         $blogs = Blog::orderBy('id', 'desc')->take(3)->get();
         $testimonials = Testimonial::all();
         $partners = Partner::all();
-        $construction = OurProject::whereHas('category', function ($query) {
-            $query->where('name', 'Construction');
-        })->with('category')->get();
-
-        $electrical = OurProject::whereHas('category', function ($query) {
-            $query->where('name', 'Electrical');
-        })->with('category')->get();
-
-        $architect = OurProject::whereHas('category', function ($query) {
-            $query->whereNotNull('name')->where('name', 'Architect');
-        })->with('category')->get();
-
-        $building = OurProject::whereHas('category', function ($query) {
-            $query->whereNotNull('name')->where('name', 'Building');
-        })->with('category')->get();
 
         $banners = AboutBanner::all();
         $intoFuture = IntoFuture::first();
@@ -55,7 +42,7 @@ class MainController extends Controller
         $ourProducts = Product::all();
         $futureFoundation = FutureFoundation::first();
         // Return the view with the data
-        return view('frontend.index', compact('banners', 'companyStatus', 'futureFoundation', 'ourProducts', 'projects', 'clients', 'teams', 'testimonials', 'blogs', 'intoFuture', 'partners', 'construction', 'building', 'architect', 'electrical'));
+        return view('frontend.index', compact('banners', 'companyStatus', 'futureFoundation', 'ourProducts', 'clients', 'teams', 'testimonials', 'blogs', 'intoFuture'));
     }
     public function storeTestimonial(Request $request)
     {
@@ -83,9 +70,11 @@ class MainController extends Controller
     public function about()
     {
         $teams = Team::all();
+        $industrial_power = IndustrialPower::first();
+        $certificates = Certificate::all();
         $about = IntoFuture::first();
         $company_advantages = CompanyAdvantage::all();
-        return view('frontend.about', compact('about', 'company_advantages', 'teams'));
+        return view('frontend.about', compact('about', 'industrial_power', 'certificates', 'company_advantages', 'teams'));
     }
 
     public function blog()
@@ -203,24 +192,8 @@ class MainController extends Controller
 
     public function projects()
     {
-        $projects = OurProject::with('category')->get();
-
-        $construction = OurProject::whereHas('category', function ($query) {
-            $query->where('name', 'Construction');
-        })->with('category')->get();
-
-        $electrical = OurProject::whereHas('category', function ($query) {
-            $query->where('name', 'Electrical');
-        })->with('category')->get();
-
-        $architect = OurProject::whereHas('category', function ($query) {
-            $query->whereNotNull('name')->where('name', 'Architect');
-        })->with('category')->get();
-
-        $building = OurProject::whereHas('category', function ($query) {
-            $query->whereNotNull('name')->where('name', 'Building');
-        })->with('category')->get();
-        return view('frontend.projects', compact('projects', 'construction', 'building', 'architect', 'electrical'));
+        $projects = OurProject::all();
+        return view('frontend.projects', compact('projects'));
     }
     public function projectSingle($id)
     {

@@ -54,10 +54,8 @@ $lang = app()->getLocale();
                                         </div> -->
                         <div class="footer-content">
                             <p>
-                                Tayhu – By combining quality and elegance, we strive to enhance the beauty
-                                and comfort of every home. Through our innovative designs and high-quality
-                                materials, we ensure that your home becomes not only more beautiful but also
-                                more modern and comfortable.</p>
+                                <x-translation key="footer_text" />
+                            </p>
                             <div class="social-icon d-flex align-items-center">
                                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                                 <a href="#"><i class="fab fa-instagram"></i></a>
@@ -70,29 +68,27 @@ $lang = app()->getLocale();
                 <div class="col-xl-2 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".4s">
                     <div class="single-footer-widget">
                         <div class="widget-head">
-                            <h5>Quick Link</h5>
+                            <h5><x-translation key="quick_link" /></h5>
                         </div>
                         <ul class="list-area">
                             <li>
                                 <a href="/about">
                                     <i class="fa-solid fa-angles-right"></i>
-                                    About Us
+                                    <x-translation key="about_link" />
                                 </a>
                             </li>
                             <li>
                                 <a href="/contact">
                                     <i class="fa-solid fa-angles-right"></i>
-                                    Contact Us
+                                    <x-translation key="contact_us_link" />
                                 </a>
                             </li>
-
                             <li>
-                                <a href="/faq">
+                                <a href="/showroom">
                                     <i class="fa-solid fa-angles-right"></i>
-                                    FAQ’S
+                                    <x-translation key="showroom_link" />
                                 </a>
                             </li>
-
                         </ul>
                     </div>
                 </div>
@@ -103,15 +99,11 @@ $lang = app()->getLocale();
                         </div>
                         <ul class="list-area">
                             <li>
-                                <a href="/showroom">
-                                    <i class="fa-solid fa-angles-right"></i>
-                                    Showroom
-                                </a>
-                            </li>
-                            <li>
                                 <a href="/projects">
                                     <i class="fa-solid fa-angles-right"></i>
-                                    Our Gallery
+                                    
+                                    <x-translation key="Our_Gallery" />
+
                                 </a>
                             </li>
                             <li>
