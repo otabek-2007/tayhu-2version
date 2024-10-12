@@ -21,7 +21,6 @@ Route::get('/', [MainController::class, 'index'])->name('home');
 Route::get('/about', [MainController::class, 'about'])->name('about');
 Route::get('/faq', [MainController::class, 'faq'])->name('faq');
 Route::get('/team/{id}', [MainController::class, 'teamSingle'])->name('team.single');
-Route::get('/catalog', [MainController::class, 'catalog'])->name('catalog');
 Route::get('/contact', [MainController::class, 'contact'])->name('contact');
 Route::get('/service/{id?}', [MainController::class, 'service'])->name('service');
 Route::get('/service-single/{id}', [MainController::class, 'serviceSingle'])->name('serviceSingle');

@@ -222,7 +222,7 @@
                                                 </ul>
                                             </li> -->
                                         <li>
-                                            <a href="/catalog">
+                                            <a href="/service">
                                                 Products
                                                 <i class="fa-solid fa-plus"></i>
                                             </a>
