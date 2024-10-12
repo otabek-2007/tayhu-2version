@@ -175,11 +175,11 @@
                 <div class="header-main">
                     <div class="header-left">
                         <div class="logo">
-                            <a href="index.html" class="header-logo">
+                            <a href="/" class="header-logo">
                                 <img src="assets/img/tayhu-logo-white-2.png" alt="logo-img"
                                     style="width:200px; height:70px;">
                             </a>
-                            <a href="index.html" class="header-logo-2">
+                            <a href="/" class="header-logo-2">
                                 <img src="assets/img/Tayhu logo (2).svg" alt="logo-img">
                             </a>
                         </div>
@@ -190,7 +190,7 @@
                                 <nav id="mobile-menu">
                                     <ul>
                                         <li class="has-dropdown active menu-thumb">
-                                            <a href="index.html">
+                                            <a href="/">
                                                 Home
 
                                             </a>
@@ -198,12 +198,12 @@
                                         </li>
 
                                         <li>
-                                            <a href="about.html">About Us</a>
+                                            <a href="/about">About Us</a>
                                         </li>
                                         <!-- <li class="has-dropdown">
                                                 <a href="news.html">
                                                     Pages
-                                                    
+
                                                 </a>
                                                 <ul class="submenu">
                                                     <li class="has-dropdown">
@@ -222,33 +222,38 @@
                                                 </ul>
                                             </li> -->
                                         <li>
-                                            <a href="service.html">
+                                            <a href="/catalog">
                                                 Products
                                                 <i class="fa-solid fa-plus"></i>
                                             </a>
+                                            <?php
+                                                $categories = \App\Models\ProductCategory::all();
+                                            ?>
                                             <ul class="submenu">
-                                                <li><a href="service.html">MDF Panels</a></li>
-                                                <li><a href="service.html">Ceiling Panels</a></li>
-                                                <li><a href="service.html">Wall Panels</a></li>
-                                                <li><a href="service.html">Window Frame</a></li>
+                                                @foreach($categories as $category)
+                                                    <li><a href="/service/{{ $category->id }}">{{ $category->name }}</a></li>
+                                                @endforeach
+                                                <li><a href="/service?category=(name)">Ceiling Panels</a></li>
+                                                <li><a href="/service?category=(name)">Wall Panels</a></li>
+                                                <li><a href="/service?category=(name)">Window Frame</a></li>
 
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="project.html">
+                                            <a href="/projects">
                                                 Gallery
 
                                             </a>
 
                                         </li>
                                         <li>
-                                            <a href="showroom.html">
+                                            <a href="/showroom">
                                                 Showroom
                                             </a>
 
                                         </li>
                                         <li>
-                                            <a href="contact.html">Contact Us</a>
+                                            <a href="/contact">Contact Us</a>
                                         </li>
                                     </ul>
                                 </nav>
