@@ -101,32 +101,12 @@
     </section>
 
 
-
     <script>
-        function changeImage(imageSrc, button) {
-            // Rasm manzilini o'zgartirish
-            const imgElement = document.getElementById('showroom-image');
-            imgElement.src = imageSrc;
+        const showroomContainer = document.querySelector('.showroom-container');
+        const showroomButtons = document.querySelectorAll('.fon-button');
+        const ceilingButtons = document.querySelectorAll('.fon-button-2');
 
-            // Barcha tugmalardan active klassni olib tashlash
-            const buttons = document.querySelectorAll('.fon-button-2');
-            buttons.forEach(btn => {
-                btn.classList.remove('fon-button-active');
-            });
-
-            // Faol tugmaga active klassni qo'shish
-            button.classList.add('fon-button-active');
-        }
-    </script>
-
-
-
-    <script>
-        const showroomContainer = document.querySelector('.showrooom-container');
-
-        const buttons = document.querySelectorAll('.fon-button');
-
-        const backgroundImages = [
+        const showroomImages = [
             @foreach($showroom as $item)
                 @foreach($item->images_array as $image)
                 '{{ asset('storage/' . str_replace('\\', '/', $image)) }}',
@@ -134,20 +114,37 @@
             @endforeach
         ];
 
-        const updateBackground = (index) => {
-            showroomContainer.style.backgroundImage = url('${backgroundImages[index]}');
+        const ceilingImages = [
+            './assets/img/showroom-images/showroom-new/ceiling-2.png',
+            './assets/img/showroom-images/showroom-new/ceiling-3.png',
+            './assets/img/showroom-images/showroom-new/ceiling-4.png',
+            './assets/img/showroom-images/showroom-new/ceiling-5.png',
+        ];
 
-            buttons.forEach(button => button.classList.remove('fon-button-active'));
+        const updateShowroomBackground = (index) => {
+            showroomContainer.style.backgroundImage = `url('${showroomImages[index]}')`;
 
-            buttons[index].classList.add('fon-button-active');
+            showroomButtons.forEach(button => button.classList.remove('fon-button-active'));
+            showroomButtons[index].classList.add('fon-button-active');
         };
 
-        buttons.forEach((button, index) => {
+        const changeImage = (imageSrc, button) => {
+            const imgElement = document.getElementById('showroom-image');
+            imgElement.src = imageSrc;
+
+            ceilingButtons.forEach(btn => {
+                btn.classList.remove('fon-button-active');
+            });
+            button.classList.add('fon-button-active');
+        };
+
+        showroomButtons.forEach((button, index) => {
             button.addEventListener('click', () => {
-                updateBackground(index);
+                updateShowroomBackground(index);
             });
         });
 
-        updateBackground(0);
+        // Initially set the first image
+        updateShowroomBackground(0);
     </script>
 @endsection
