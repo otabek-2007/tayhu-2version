@@ -176,8 +176,7 @@
                     <div class="header-left">
                         <div class="logo">
                             <a href="/" class="header-logo">
-                                <img src="/assets/img/tayhu-logo-white-2.png" alt="logo-img"
-                                    style="width:200px; height:70px;">
+                                <img src="/assets/img/tayhu-logo-white-2.png" alt="logo-img" style="width:200px; height:70px;">
                             </a>
                             <a href="/" class="header-logo-2">
                                 <img src="/assets/img/Tayhu logo (2).svg" alt="logo-img">
@@ -190,77 +189,51 @@
                                 <nav id="mobile-menu">
                                     <ul>
                                         <li class="has-dropdown active menu-thumb">
-                                            <a href="/">
-                                                Home
-
-                                            </a>
-
+                                            <a href="/">Home</a>
                                         </li>
-
+                                        <li><a href="/about">About Us</a></li>
                                         <li>
-                                            <a href="/about">About Us</a>
-                                        </li>
-                                        <!-- <li class="has-dropdown">
-                                                <a href="news.html">
-                                                    Pages
-
-                                                </a>
-                                                <ul class="submenu">
-                                                    <li class="has-dropdown">
-                                                        <a href="team-details.html">
-                                                            Our Team
-                                                            <i class="fas fa-angle-down"></i>
-                                                        </a>
-                                                        <ul class="submenu">
-                                                            <li><a href="team.html">Our Team</a></li>
-                                                            <li><a href="team-details.html">Team Details</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="pricing.html">Pricing</a></li>
-                                                    <li><a href="faq.html">Faq's</a></li>
-                                                    <li><a href="404.html">404 Page</a></li>
-                                                </ul>
-                                            </li> -->
-                                        <li>
-                                            <a href="/service">
-                                                Products
-                                                <i class="fa-solid fa-plus"></i>
-                                            </a>
-                                            <?php
-                                                $categories = \App\Models\ProductCategory::all();
-                                            ?>
+                                            <a href="/service">Products <i class="fa-solid fa-plus"></i></a>
+                                            <?php $categories = \App\Models\ProductCategory::all(); ?>
                                             <ul class="submenu">
                                                 @foreach($categories as $category)
-                                                    <li><a href="/service/{{ $category->id }}">{{ $category->getTranslatedAttribute('name' , app()->getLocale()) }}</a></li>
+                                                <li>
+                                                    <a href="/service/{{ $category->id }}">
+                                                        {{ $category->getTranslatedAttribute('name' , app()->getLocale()) }}
+                                                    </a>
+                                                </li>
                                                 @endforeach
-
                                             </ul>
                                         </li>
-                                        <li>
-                                            <a href="/projects">
-                                                Gallery
-
-                                            </a>
-
-                                        </li>
-                                        <li>
-                                            <a href="/showroom">
-                                                Showroom
-                                            </a>
-
-                                        </li>
-                                        <li>
-                                            <a href="/contact">Contact Us</a>
-                                        </li>
+                                        <li><a href="/projects">Gallery</a></li>
+                                        <li><a href="/showroom">Showroom</a></li>
+                                        <li><a href="/contact">Contact Us</a></li>
                                     </ul>
                                 </nav>
                             </div>
                         </div>
+
+                        <!-- Language Dropdown -->
+                        <!-- Language Dropdown -->
+                        <form action="{{ route('change.language') }}" method="POST" class="language-form d-flex">
+                            @csrf
+                            <div class="dropdown">
+                                <button type="button" class="dropdown-btn">
+                                    {{ strtoupper(app()->getLocale()) }} <i class="fa fa-angle-down"></i> <!-- Icon for dropdown -->
+                                </button>
+                                <div class="dropdown-content">
+                                    <div data-value="uz">Uz</div>
+                                    <div data-value="ru">Ru</div>
+                                    <div data-value="en">En</div>
+                                </div>
+                                <input type="hidden" name="lang" id="selected-language" value="{{ app()->getLocale() }}">
+                            </div>
+                        </form>
+
+
+
                         <a href="#0" class="search-trigger search-icon"><i class="fas fa-search"></i></a>
-                        <div class="header-button">
-                            <a href="/contact" class="theme-btn">GAT A QUOTE <i
-                                    class="fa-solid fa-arrow-right"></i></a>
-                        </div>
+
                         <div class="header__hamburger d-xl-block my-auto">
                             <div class="sidebar__toggle">
                                 <i class="fas fa-bars"></i>
@@ -271,6 +244,83 @@
             </div>
         </div>
     </header>
+
+    <style>
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin-left: 15px;
+            /* Adjust spacing as needed */
+        }
+
+        .dropdown-btn {
+            background-color: #CD9967;
+            color: white;
+            padding: 5px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .dropdown-btn i {
+            margin-left: 10px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 100%;
+            border-radius: 5px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content div {
+            color: black;
+            padding: 5px 16px;
+            cursor: pointer;
+        }
+
+        .dropdown-content div:hover,
+        .dropdown-content div.active {
+            background-color: #CD9967;
+            color: #fff;
+        }
+    </style>
+
+    <script>
+        const dropdownBtn = document.querySelector('.dropdown-btn');
+        const dropdownContent = document.querySelector('.dropdown-content');
+        const dropdownItems = document.querySelectorAll('.dropdown-content div');
+        const selectedLanguage = document.getElementById('selected-language');
+        const languageForm = document.querySelector('.language-form');
+
+        // Toggle dropdown visibility
+        dropdownBtn.addEventListener('click', () => {
+            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Change language on selection and submit form
+        dropdownItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const lang = item.getAttribute('data-value');
+                selectedLanguage.value = lang;
+                dropdownBtn.childNodes[0].textContent = item.textContent.toUpperCase();
+                languageForm.submit(); // Submit the form
+            });
+        });
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', (event) => {
+            if (!event.target.closest('.dropdown')) {
+                dropdownContent.style.display = 'none';
+            }
+        });
+    </script>
 
     <!-- Search Area Start -->
     <div class="search-wrap">

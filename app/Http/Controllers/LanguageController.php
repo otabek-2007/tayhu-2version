@@ -10,7 +10,7 @@ class LanguageController extends Controller
 {
     public function changeLanguage(Request $request)
     {
-        $lang = $request->input('lang');
+        $lang = $request->input('lang'); // Ensure this matches the form input name
         if (in_array($lang, ['en', 'ru', 'uz'])) {
             Session::put('locale', $lang);
             App::setLocale($lang);
